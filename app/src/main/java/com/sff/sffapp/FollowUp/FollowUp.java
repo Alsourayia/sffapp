@@ -37,7 +37,7 @@ public class FollowUp extends AppCompatActivity implements ConnectionInterface, 
     String currFragment ;
     public    Toolbar myToolbar;
     public Toolbar myFooterToolbar ;
-    String mb;
+    String mb2;
     TextView rem_val_desc ;
 
     @Override
