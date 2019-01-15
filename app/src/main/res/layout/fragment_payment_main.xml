@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".Payment.MainPaymentFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/background_light">
+
+
+                    <TextView
+                        android:id="@+id/payment_fragment_txt_payment_type"
+                        android:layout_width="362dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="16dp"
+                        android:hint=" نوع الدفعة"
+                        android:nextFocusLeft="@+id/p8009_txt_loc_type"
+                        android:nextFocusRight="@+id/p8009_txt_loc_type"
+                        android:nextFocusUp="@+id/p8009_txt_loc_type"
+                        android:nextFocusDown="@+id/p8009_txt_loc_type"
+                        android:theme="@style/lov_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/lbl_amount"
+                        style="@style/label_trans_style"
+                        android:layout_width="68dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:paddingTop="10dp"
+                        android:text="المبلغ"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/payment_fragment_txt_payment_type" />
+
+                    <EditText
+                        android:id="@+id/payment_fragment_txt_amount"
+                        style="@style/text_trans_style"
+                        android:layout_width="265dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+
+                        android:hint="المبلغ"
+                        android:inputType="numberDecimal"
+                        android:theme="@style/text_trans_style"
+
+                        app:layout_constraintEnd_toStartOf="@+id/lbl_amount"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/payment_fragment_txt_payment_type" />
+
+                    <TextView
+                        android:id="@+id/lbl_amount2"
+                        style="@style/label_trans_style"
+                        android:layout_width="68dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:paddingTop="10dp"
+                        android:text="تأكيد المبلغ"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_amount" />
+
+                    <EditText
+                        android:id="@+id/payment_fragment_txt_app_amount"
+                        style="@style/text_trans_style"
+                        android:layout_width="265dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@color/foreground_text_color"
+                        android:ems="10"
+                        android:hint="تأكيد المبلغ"
+                        android:inputType="number|numberDecimal"
+                        android:paddingTop="10dp"
+                        android:textAlignment="viewEnd"
+                        android:textDirection="rtl"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@+id/lbl_amount2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/payment_fragment_txt_amount" />
+
+                    <FrameLayout
+                        android:id="@+id/PaymentChildFragmentContainer"
+                        android:layout_width="fill_parent"
+                        android:layout_height="384dp"
+                        android:layout_above="@+id/footer"
+                        android:layout_below="@+id/header"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/lbl_amount2" />
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

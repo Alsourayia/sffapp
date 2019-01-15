@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Payment.ChqPaymentFragment"
+    android:id="@+id/ChqPaymentFragment"    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/footer"
+            android:layout_below="@+id/header"
+            android:layout_alignParentStart="true"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/background_light"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white">
+
+
+                    <TextView
+                        android:id="@+id/payment_fragment_txt_chq_bank_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="16dp"
+                        android:hint="البنك المسحوب منه"
+                        android:nextFocusLeft="@+id/p8009_txt_loc_type"
+                        android:nextFocusRight="@+id/p8009_txt_loc_type"
+                        android:nextFocusUp="@+id/p8009_txt_loc_type"
+                        android:nextFocusDown="@+id/p8009_txt_loc_type"
+                        android:theme="@style/lov_style"
+                        app:layout_constraintEnd_toStartOf="@+id/lbl_ch_card_bank_no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/payment_fragment_txt_chq_date"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="16dp"
+                        android:hint="تاريخ الشيك"
+                        android:nextFocusLeft="@+id/p8009_txt_loc_type"
+                        android:nextFocusRight="@+id/p8009_txt_loc_type"
+                        android:nextFocusUp="@+id/p8009_txt_loc_type"
+                        android:nextFocusDown="@+id/p8009_txt_loc_type"
+                        android:theme="@style/lov_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/payment_fragment_txt_chq_bank_desc" />
+
+                    <TextView
+                        android:id="@+id/lbl_cheque_no"
+                        style="@style/label_trans_style"
+                        android:layout_width="68dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:paddingTop="10dp"
+                        android:text="رقم الشيك"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/payment_fragment_txt_chq_date" />
+
+                    <EditText
+                        android:id="@+id/payment_fragment_txt_chq_no"
+                        style="@style/text_trans_style"
+                        android:layout_width="265dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/foreground_text_color"
+                        android:ems="10"
+                        android:hint="رقم الشيك"
+                        android:inputType="number"
+                        android:textAlignment="viewEnd"
+                        android:textDirection="rtl"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/lbl_cheque_no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/payment_fragment_txt_chq_date" />
+
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</FrameLayout>

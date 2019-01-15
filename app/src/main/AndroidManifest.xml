@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sff.sffapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true">
+        <activity
+            android:name=".menu.login"
+            android:label="@string/loginact_title"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".menu.menu"
+            android:label="@string/menuact_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".customerOrder.OrderList"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".customerOrder.OrderMoreInfo"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".SalesTicket.SalesTicket"
+            android:theme="@style/AppTheme2"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".FollowUp.FollowUp"
+            android:theme="@style/AppTheme2"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+    </application>
+
+</manifest>

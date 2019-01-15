@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/FrameAddItem"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SalesTicket.SalesTicketAddItemFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light">
+
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/footer"
+            android:layout_below="@+id/header"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:background="@android:color/background_light"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="536dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@android:color/background_light"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/mess_fragment_txt_room_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="60dp"
+                        android:hint=" النشاط"
+                        android:theme="@style/lov_style" />
+
+                    <TextView
+                        android:id="@+id/p8009_txt_item_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/mess_fragment_txt_room_desc"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp"
+                        android:hint="المنتج"
+
+                        android:theme="@style/lov_style" />
+
+
+                    <TextView
+                        android:id="@+id/p8009_txt_color_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_below="@+id/p8009_txt_item_desc"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/text_lov"
+                        android:hint="اللون "
+                        android:theme="@style/lov_style" />
+
+                    <EditText
+                        android:id="@+id/p8009_txt_item_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_below="@+id/p8009_txt_color_name"
+
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="0dp"
+
+                        android:layout_marginTop="10dp"
+                        android:hint="الوصف"
+                        android:inputType="text"
+                        android:singleLine="false"
+                        android:textDirection="rtl"
+                        android:theme="@style/text_trans_style" />
+
+                    <EditText
+                        android:id="@+id/p8009_txt_price"
+                        style="@style/text_trans_style"
+                        android:layout_width="121dp"
+                        android:layout_height="43dp"
+                        android:layout_below="@+id/p8009_txt_item_note"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="133dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="130dp"
+                        android:layout_marginBottom="157dp"
+                        android:hint="السعر"
+                        android:inputType="numberDecimal"
+                        android:textAlignment="center" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</FrameLayout>

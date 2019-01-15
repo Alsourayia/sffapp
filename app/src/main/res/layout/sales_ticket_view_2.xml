@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/foreground_text_color"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/foreground_text_color"
+            android:paddingTop="10dp"
+            android:text="بيانات المفوض"
+            android:textAlignment="center"
+            android:textDirection="rtl"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/p8009_txt_contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_light"
+            android:ems="10"
+            android:hint="إسم المفوض"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textDirection="rtl" />
+
+        <EditText
+            android:id="@+id/p8009_txt_contact_mob_no"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_light"
+            android:ems="10"
+            android:hint="رقم الجوال"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textDirection="rtl" />
+
+        <EditText
+            android:id="@+id/p8009_txt_contact_email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_light"
+            android:ems="10"
+            android:hint="E-Mail"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textDirection="ltr" />
+
+        <EditText
+            android:id="@+id/p8009_txt_relationship"
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/background_light"
+            android:hint="طبيعة العلاقة"
+            android:paddingTop="7dp"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textDirection="rtl"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

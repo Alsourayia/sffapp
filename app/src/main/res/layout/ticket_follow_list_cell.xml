@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="@android:color/white"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <ImageView
+        android:id="@+id/p8002_isnew_flag"
+        android:layout_width="56dp"
+        android:layout_height="31dp"
+        android:src="@drawable/newticket"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/cust"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/p8002_txt_custName_desc"
+        style="@style/text_trans_style"
+        android:layout_width="325dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="هاني"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_ticketNo_desc" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/p8002_txt_ticketNo_desc"
+        style="@style/text_trans_style"
+        android:layout_width="107dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="1980"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/p8002_txt_ticketDate_desc"
+        style="@style/text_trans_style"
+        android:layout_width="161dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="2dp"
+        android:background="@android:color/white"
+        android:textAlignment="center"
+        android:textDirection="ltr"
+        android:theme="@style/text_trans_style"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/time_line_1"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_txt_ticketNo_desc"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="6dp"
+        android:src="@drawable/location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/p8002_txt_address_desc"
+        style="@style/text_trans_style"
+        android:layout_width="325dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_custName_desc" />
+
+    <TextView
+        android:id="@+id/p8002_txt_mobileNo_desc"
+        style="@style/text_trans_style"
+        android:layout_width="325dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_address_desc" />
+
+
+    <TextView
+        android:id="@+id/p8002_txt_rem_val_desc"
+        style="@style/text_trans_style"
+        android:layout_width="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:text="المتبقي"
+        android:theme="@style/text_trans_style"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_btn_rem_val"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_mobileNo_desc" />
+
+    <!--
+
+          -->
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="6dp"
+        android:backgroundTint="@color/foreground_text_color"
+        android:src="@drawable/call_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_address_desc" />
+
+
+    <ImageView
+        android:id="@+id/p8002_btn_rem_val"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="6dp"
+        android:backgroundTint="@color/foreground_text_color"
+        android:src="@drawable/mony"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+
+    <ImageView
+        android:id="@+id/p8002_btn_measure_team"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="6dp"
+        android:backgroundTint="@color/foreground_text_color"
+        android:src="@drawable/mesurment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_btn_rem_val" />
+
+    <TextView
+        android:id="@+id/p8002_txt_measur_assign_ccs_team_desc"
+        style="@style/text_trans_style"
+        android:layout_width="182dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_btn_measure_team"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_rem_val_desc" />
+
+
+    <ImageView
+        android:id="@+id/p8002_btn_measure_date"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/foreground_text_color"
+        android:src="@drawable/calender"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_txt_measur_assign_ccs_team_desc"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_btn_measurement" />
+
+    <TextView
+        android:id="@+id/p8002_txt_measurement_appt"
+        style="@style/text_trans_style"
+        android:layout_width="110dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_btn_measure_date"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_rem_val_desc" />
+
+    <ImageView
+        android:id="@+id/p8002_btn_install_team"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/foreground_text_color"
+        android:src="@drawable/instulation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_btn_measure_team" />
+
+    <TextView
+        android:id="@+id/p8002_txt_install_assign_ccs_team_desc"
+        style="@style/text_trans_style"
+        android:layout_width="182dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_btn_install_team"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_measur_assign_ccs_team_desc" />
+
+    <ImageView
+        android:id="@+id/p8002_btn_install_date"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/foreground_text_color"
+        android:src="@drawable/calender"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_txt_install_assign_ccs_team_desc"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_btn_measure_date" />
+
+    <TextView
+        android:id="@+id/p8002_txt_install_appt"
+        style="@style/text_trans_style"
+        android:layout_width="110dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_btn_install_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_measurement_appt" />
+
+    <ImageView
+        android:id="@+id/p8002_btn_measurement"
+        android:layout_width="54dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/p8002_txt_measurement_appt"
+        app:layout_constraintEnd_toStartOf="@+id/p8002_txt_rem_val_desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8002_txt_mobileNo_desc"
+        app:srcCompat="@drawable/ic_installation_1" />
+    <!--region Description-->
+    @android:drawable/checkbox_on_background
+    <!--endregion-->
+
+
+</android.support.constraint.ConstraintLayout>

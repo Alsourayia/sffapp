@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/black</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="Toolbarcolor">#025d31</color>
+    <color name="usage_pink">#b42379</color>
+
+
+    <color name="tbColorPrimary">#025d31</color>
+    <color name="tbColorPrimaryDark">#e64a19</color>
+    <color name="sff">#025d31</color>
+    <color name="sffTextColor">#edeaea</color>
+
+</resources>

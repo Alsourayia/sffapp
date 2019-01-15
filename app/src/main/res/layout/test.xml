@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/sff"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <!-- Load the toolbar here -->
+        <include
+            layout="@layout/sff_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!-- Rest of content for the activity -->
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#689F38"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <!-- Load the footerbar here -->
+        <include
+            layout="@layout/sff_footerbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!-- Rest of content for the activity -->
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/FrameLayout_1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
+        />
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header"
+        android:fillViewport="true">
+        <LinearLayout
+            android:id="@+id/myLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:fillViewport="true">
+            <TextView
+                android:id="@+id/bodytext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="used for scroll act"
+                android:textColor="#F44336"
+                android:gravity="center"
+                android:textSize="25sp"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

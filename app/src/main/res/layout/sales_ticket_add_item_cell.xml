@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/lbl_trans_ser_no"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        android:paddingTop="5dp"
+        android:text="#"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_trans_ser_no"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_trans_ser_no"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="16dp"
+        android:paddingTop="5dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lbl_mgrp_desc"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:paddingTop="10dp"
+        android:text="النشاط"
+
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mess_fragment_txt_room_desc"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_trans_ser_no" />
+
+    <TextView
+        android:id="@+id/mess_fragment_txt_room_desc"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/foreground_text_color"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingTop="10dp"
+
+        android:textAlignment="viewEnd"
+        android:textDirection="rtl"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_trans_ser_no" />
+
+    <TextView
+        android:id="@+id/lbl_item_desc"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:paddingTop="10dp"
+        android:text="المنتج"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/p8009_txt_item_desc"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_mgrp_desc" />
+
+    <TextView
+        android:id="@+id/p8009_txt_item_desc"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/foreground_text_color"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingTop="10dp"
+        android:textAlignment="viewEnd"
+        android:textDirection="rtl"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mess_fragment_txt_room_desc" />
+
+    <TextView
+        android:id="@+id/lbl_color_name"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:paddingTop="10dp"
+        android:text="اللون"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/p8009_txt_color_name"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_item_desc" />
+
+    <TextView
+        android:id="@+id/p8009_txt_color_name"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/foreground_text_color"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingTop="10dp"
+        android:textAlignment="viewEnd"
+        android:textDirection="rtl"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8009_txt_item_desc" />
+
+    <TextView
+        android:id="@+id/lbl_note"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:paddingTop="10dp"
+        android:text="الوصف"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/p8009_txt_item_note"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_color_name" />
+
+    <TextView
+        android:id="@+id/p8009_txt_item_note"
+        android:layout_width="260dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/foreground_text_color"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingTop="20dp"
+        android:textAlignment="viewEnd"
+        android:textDirection="rtl"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8009_txt_color_name" />
+
+    <TextView
+        android:id="@+id/lbl_price"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:paddingTop="10dp"
+        android:text="السعر"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/p8009_txt_price"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_note" />
+
+    <TextView
+        android:id="@+id/p8009_txt_price"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/foreground_text_color"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingTop="10dp"
+        android:textAlignment="viewEnd"
+        android:textDirection="rtl"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p8009_txt_item_note" />
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
