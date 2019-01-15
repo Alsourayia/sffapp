@@ -28,8 +28,9 @@ public class CardPaymentFragment extends Fragment implements View.OnClickListene
     public String payment_fragment_txt_card_bank_code ;
     public EditText payment_fragment_txt_card_no ;
     EditText payment_fragment_txt_card_trans_no;
+    String nn ;
+    ٍString mb;
 
-  String nn ;
 
 
 
