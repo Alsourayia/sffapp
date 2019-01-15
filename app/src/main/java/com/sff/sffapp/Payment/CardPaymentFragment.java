@@ -31,6 +31,8 @@ public class CardPaymentFragment extends Fragment implements View.OnClickListene
 
     String nn ;
     String hanii;
+    String hh;
+
 
 
 
