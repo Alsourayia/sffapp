@@ -36,6 +36,7 @@ public class CardPaymentFragment extends Fragment implements View.OnClickListene
 
 
 
+
     public CardPaymentFragment() {
         // Required empty public constructor
         payment_fragment_txt_card_bank_code = "" ;
