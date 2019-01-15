@@ -30,7 +30,7 @@ public class CardPaymentFragment extends Fragment implements View.OnClickListene
     EditText payment_fragment_txt_card_trans_no;
 
     String nn ;
-    String hani;
+    String hanii;
 
 
 
