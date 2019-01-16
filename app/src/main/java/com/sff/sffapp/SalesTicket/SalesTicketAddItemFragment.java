@@ -22,7 +22,8 @@ import org.ksoap2.serialization.SoapObject;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SalesTicketAddItemFragment extends Fragment  implements View.OnClickListener {
+public class SalesTicketAddItemFragment extends Fragment  implements View.OnClickListener
+{
     SpinnerDialog spinnerDialog ;
     TextView p8009_txt_mgrp_desc ;
     String p8009_txt_mgrp_desc_val;
@@ -35,13 +36,16 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
     JSONObject json ;
     public SalesTicketAddItemFragment()
     {
-
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        /********************************************************************************************/
         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setOnClickListener(this);
         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setOnClickListener(this);
+        /********************************************************************************************/
         View v = inflater.inflate(R.layout.fragment_sales_ticket_add_item_fragment, container, false);
+        /********************************************************************************************/
         p8009_txt_mgrp_desc = v.findViewById(R.id.mess_fragment_txt_room_desc) ;
         p8009_txt_mgrp_desc.setOnClickListener(this);
         p8009_txt_mgrp_desc.requestFocus() ;
@@ -50,6 +54,7 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
         p8009_txt_color_name = v.findViewById(R.id.p8009_txt_color_name) ;
         p8009_txt_color_name.setOnClickListener(this);
         p8009_txt_price = v.findViewById(R.id.p8009_txt_price) ;
+        /********************************************************************************************/
         return v;
     }
     @Override
@@ -81,9 +86,12 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
     }
     public void onClick(View v){
 
-        if (v.getId() == R.id.footer_btn_check) {
+        if (v.getId() == R.id.footer_btn_check)
+        {
+            /********************************************************************************************/
             FragmentManager fm1 = this.getActivity().getSupportFragmentManager();
             SalesTicketAddItemCell mItemCell ;
+            /********************************************************************************************/
             mItemCell = new SalesTicketAddItemCell();
             mItemCell.v_ser_no = (((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.size()+1);
             mItemCell.v_mgrp_desc = p8009_txt_mgrp_desc.getText().toString();
@@ -118,7 +126,7 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                 @Override
                 public void onClick(String item, int position, SoapObject obj) {
                     p8009_txt_mgrp_desc.setText( item );
-                    p8009_txt_mgrp_desc_val = obj.getProperty("val1").toString();    }
+                    p8009_txt_mgrp_desc_val = obj.getPrimitiveProperty("val1").toString();    }
             });
         }
         else if ( v.getId()== R.id.p8009_txt_item_desc)
@@ -134,23 +142,24 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                     @Override
                     public void onClick(String item, int position, SoapObject obj) {
                         p8009_txt_item_desc.setText(item);
-                        p8009_txt_item_desc_val = obj.getProperty("val1").toString();
-                        item_price = obj.getProperty("val5").toString();
+                        p8009_txt_item_desc_val = obj.getPrimitiveProperty("val1").toString();
+                        item_price = obj.getPrimitiveProperty("val5").toString();
                         ((EditText)SalesTicketAddItemFragment.this.getView().findViewById(R.id.p8009_txt_price)).setText(item_price);
 
                     }
                 });
-            } catch (Exception e)
-
+            }
+            catch (Exception e)
             {
 
             }
         }
-        else if ( v.getId()== R.id.p8009_txt_color_name) {
+        else if ( v.getId()== R.id.p8009_txt_color_name)
+        {
             //Toast.makeText(this, "toolbar_btn_prev", Toast.LENGTH_SHORT).show();
             if (p8009_txt_item_desc_val == null)
             {
-                Toast.makeText(this.getContext(), "Must Select An item",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getContext(), "يجب اختيار صنف",Toast.LENGTH_SHORT).show();
             }
             else
             {
@@ -165,17 +174,17 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                         @Override
                         public void onClick(String item, int position, SoapObject obj) {
                             p8009_txt_color_name.setText(item);
-
-                            p8009_txt_color_name_val = obj.getProperty("val1").toString();
-
-                            item_price = obj.getProperty("val3").toString();
+                            p8009_txt_color_name_val = obj.getPrimitiveProperty("val1").toString();
+                            item_price = obj.getPrimitiveProperty("val3").toString();
                             ((EditText)SalesTicketAddItemFragment.this.getView().findViewById(R.id.p8009_txt_price)).setText(item_price.substring(1));
-                            if (item_price.startsWith("F")) {
+                            if (item_price.startsWith("F"))
+                            {
                                 ((EditText)SalesTicketAddItemFragment.this.getView().findViewById(R.id.p8009_txt_price)).setEnabled(false);
                             }
                         }
                     });
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                 }
             }

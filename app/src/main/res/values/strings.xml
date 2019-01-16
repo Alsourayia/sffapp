@@ -12,6 +12,7 @@
     <string name="spainner_headerTitle_for_color">اختار اللون</string>
     <string name="headerTitle_SalesTicketStartFragment">تذكرة مبيعات</string>
     <string name="headerTitle_SalesTicketListFragment">اضافة الاصناف لتذكرة المبيعات</string>
+    <string name="header_salesticket_footer_btn_save">هل تريد الحفظ ؟</string>
 
 
 

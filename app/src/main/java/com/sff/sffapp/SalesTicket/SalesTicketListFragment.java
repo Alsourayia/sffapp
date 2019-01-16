@@ -41,7 +41,7 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
         addItemListAdapter = new SalesTicketListAdapter(this.getContext(), this.addItemArray);
         listView.setAdapter(addItemListAdapter);
         /********************************************************************************************/
-        InputMethodManager inputManager = (InputMethodManager) this.getActivity().getSystemService(this.getContext().INPUT_METHOD_SERVICE);
+        //InputMethodManager inputManager = (InputMethodManager) this.getActivity().getSystemService(this.getContext().INPUT_METHOD_SERVICE);
         return v;
     }
     @Override
@@ -71,6 +71,7 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
         }
+        /********************************************************************************************
         try
         {
             ((InputMethodManager) this.getActivity().getSystemService(this.getActivity().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(this.getActivity().getCurrentFocus().getWindowToken(), 0);
@@ -78,6 +79,7 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
         {
             e.getStackTrace();
         }
+        /********************************************************************************************/
     }
     public void onClick(View v)
     {
@@ -110,8 +112,8 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
                 }
             };
             AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-            builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
-                    .setNegativeButton("No", dialogClickListener).show();
+            builder.setMessage(getString(R.string.header_salesticket_footer_btn_save)).setPositiveButton("نعم", dialogClickListener)
+                    .setNegativeButton("لا", dialogClickListener).show();
         }
         /********************************************************************************************/
     }
