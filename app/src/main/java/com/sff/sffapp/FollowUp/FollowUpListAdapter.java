@@ -301,7 +301,6 @@ public FollowUpListAdapter(Context context , ArrayList<FollowUpListCell> TicketL
                     }
                     catch ( Exception e )
                     {
-
                         Toast.makeText(mContext, "CCS_TEAM_CODE!", Toast.LENGTH_LONG).show();
                     }
                     /********************************************/
@@ -316,7 +315,6 @@ public FollowUpListAdapter(Context context , ArrayList<FollowUpListCell> TicketL
     }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
         if ( view.getId()== R.id.p8002_txt_measurement_appt || view.getId() == R.id.p8002_btn_measure_date)  {
             JSONObject json;
             try
@@ -326,22 +324,15 @@ public FollowUpListAdapter(Context context , ArrayList<FollowUpListCell> TicketL
                 json.put("TICKETPK" , ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).ticketNo_desc) ;
                 json.put("USER_CODE" , userInfo.getUSER_NO()) ;
                 json.put("APPT_DATE" ,dayOfMonth+ "-" + (month+1) +"-" + year  ) ;
-
                 DBconnection dBconnection = new DBconnection(json.toString() , "TICKET_ACTIONS" , this , mContext , "UPDATE_MAPPT"  ) ;
                 dBconnection.execute();
                 ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).measurement_appt =dayOfMonth+ "-" + (month+1) +"-" + year  ;
-
-
                 this.notifyDataSetChanged();
             }
             catch ( Exception e )
             {
-
                 Toast.makeText(mContext, "!!ORDER_INFO!!", Toast.LENGTH_LONG).show();
             }
-
-
-
         }
         else if ( view.getId()== R.id.p8002_txt_install_appt || view.getId() == R.id.p8002_btn_install_date)  {
             JSONObject json;
@@ -352,24 +343,16 @@ public FollowUpListAdapter(Context context , ArrayList<FollowUpListCell> TicketL
                 json.put("TICKETPK" , ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).ticketNo_desc) ;
                 json.put("USER_CODE" , userInfo.getUSER_NO()) ;
                 json.put("APPT_DATE" ,dayOfMonth+ "-" + (month+1) +"-" + year  ) ;
-
                 DBconnection dBconnection = new DBconnection(json.toString() , "TICKET_ACTIONS" , this , mContext , "UPDATE_IAPPT"  ) ;
-
                 dBconnection.execute();
                 ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).install_assign_date_appt =dayOfMonth+ "-" + (month+1) +"-" + year  ;
-
                 this.notifyDataSetChanged();
             }
             catch ( Exception e )
             {
-
                 Toast.makeText(mContext, "!!ORDER_INFO!!", Toast.LENGTH_LONG).show();
             }
-
-
-
         }
-
         else
         {
             Toast.makeText(mContext, "TAG=ingal3", Toast.LENGTH_SHORT).show();
@@ -429,7 +412,7 @@ public FollowUpListAdapter(Context context , ArrayList<FollowUpListCell> TicketL
             {
                 Toast.makeText(mContext, "No data found-CCS_TEAM_CODE", Toast.LENGTH_SHORT).show();
             }
-        }else if (method_id== "UPDATE_MAPPT" ) {
+        }else if (method_id == "UPDATE_MAPPT" ) {
             if (obj1 != null)
             {
                 obj2 = (SoapObject) obj.getProperty(0);

@@ -10,7 +10,8 @@
     <string name="spainner_headeTitle_for_activity">اختار نوع النشاط</string>
     <string name="spainner_headerTitle_for_item">اختار الصنف</string>
     <string name="spainner_headerTitle_for_color">اختار اللون</string>
-    <string name="headerTitle_STARTSALESTICKET">تذكرة مبيعات</string>
+    <string name="headerTitle_SalesTicketStartFragment">تذكرة مبيعات</string>
+    <string name="headerTitle_SalesTicketListFragment">اضافة الاصناف لتذكرة المبيعات</string>
 
 
 
