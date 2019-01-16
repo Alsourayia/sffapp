@@ -2,26 +2,18 @@ package com.sff.sffapp.SalesTicket;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.sff.sffapp.R;
-import com.sff.sffapp.database.GeneralReference;
 import com.sff.sffapp.lovs.OnSpinerItemClick;
 import com.sff.sffapp.lovs.SpinnerDialog;
 import com.sff.sffapp.menu.userInfo;
-
 import org.json.JSONObject;
 import org.ksoap2.serialization.SoapObject;
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SalesTicketAddItemFragment extends Fragment  implements View.OnClickListener
 {
     SpinnerDialog spinnerDialog ;
@@ -58,7 +50,8 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
         return v;
     }
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.VISIBLE);
         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.VISIBLE);
@@ -66,9 +59,11 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
     }
     @Override
-    public void onHiddenChanged(boolean hidden) {
+    public void onHiddenChanged(boolean hidden)
+    {
         super.onHiddenChanged(hidden);
-        if (hidden) {
+        if (hidden)
+        {
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
         }
@@ -84,8 +79,9 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
     public void onStop() {
         super.onStop();
     }
-    public void onClick(View v){
-
+    public void onClick(View v)
+    {
+        /********************************************************************************************/
         if (v.getId() == R.id.footer_btn_check)
         {
             /********************************************************************************************/
@@ -102,25 +98,31 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
             mItemCell.v_color_code = p8009_txt_color_name_val;
             mItemCell.v_note = ((EditText)fm1.findFragmentByTag("SalesTicketAddItemFragment").getView().findViewById(R.id.p8009_txt_item_note)).getText().toString();
             mItemCell.v_item_price= ((EditText)fm1.findFragmentByTag("SalesTicketAddItemFragment").getView().findViewById(R.id.p8009_txt_price)).getText().toString();
+            /********************************************************************************************/
             ((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.add(0,mItemCell);
             ((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemListAdapter.notifyDataSetChanged();
+            /********************************************************************************************/
             fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
+            /********************************************************************************************/
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
+            /********************************************************************************************/
             fm1.beginTransaction().remove(this).commit();
         }
-        else
-            if (v.getId() == R.id.footer_btn_cancel)
-            {
+        /********************************************************************************************/
+        else if (v.getId() == R.id.footer_btn_cancel)
+        {
             FragmentManager fm1 = this.getActivity().getSupportFragmentManager();
             fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
+            fm1.beginTransaction().remove(this).commit();
+            /********************************************************************************************/
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
-            fm1.beginTransaction().remove(this).commit();
-            }
+            /********************************************************************************************/
+        }
+        /********************************************************************************************/
         else if ( v.getId()== R.id.mess_fragment_txt_room_desc)
         {
-            //Toast.makeText(this, "toolbar_btn_prev", Toast.LENGTH_SHORT).show();
             spinnerDialog = new SpinnerDialog(this.getActivity(),getString(R.string.spainner_headeTitle_for_activity),"MAINGROUP","val2",this.getContext() , "8009" , "" );
             spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
                 @Override
@@ -129,9 +131,9 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                     p8009_txt_mgrp_desc_val = obj.getPrimitiveProperty("val1").toString();    }
             });
         }
+        /********************************************************************************************/
         else if ( v.getId()== R.id.p8009_txt_item_desc)
         {
-            //Toast.makeText(this, "toolbar_btn_prev", Toast.LENGTH_SHORT).show();
             json  = new JSONObject() ;
             try
             {
@@ -145,18 +147,16 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                         p8009_txt_item_desc_val = obj.getPrimitiveProperty("val1").toString();
                         item_price = obj.getPrimitiveProperty("val5").toString();
                         ((EditText)SalesTicketAddItemFragment.this.getView().findViewById(R.id.p8009_txt_price)).setText(item_price);
-
                     }
                 });
             }
             catch (Exception e)
             {
-
             }
         }
+        /********************************************************************************************/
         else if ( v.getId()== R.id.p8009_txt_color_name)
         {
-            //Toast.makeText(this, "toolbar_btn_prev", Toast.LENGTH_SHORT).show();
             if (p8009_txt_item_desc_val == null)
             {
                 Toast.makeText(this.getContext(), "يجب اختيار صنف",Toast.LENGTH_SHORT).show();
@@ -168,7 +168,6 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                 {
                     json.put("JSON_ITEM_CODE" , p8009_txt_item_desc_val ) ;
                     json.put("JSON_STORE_CODE" , userInfo.getUSER_STORE() ) ;
-
                     spinnerDialog = new SpinnerDialog(this.getActivity(), getString(R.string.spainner_headerTitle_for_color), "COLORS", "val2", this.getContext(), "8009",json.toString());
                     spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
                         @Override
@@ -189,5 +188,6 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                 }
             }
         }
+        /********************************************************************************************/
     }
 }

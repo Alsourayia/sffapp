@@ -13,6 +13,8 @@
     <string name="headerTitle_SalesTicketStartFragment">تذكرة مبيعات</string>
     <string name="headerTitle_SalesTicketListFragment">اضافة الاصناف لتذكرة المبيعات</string>
     <string name="header_salesticket_footer_btn_save">هل تريد الحفظ ؟</string>
+    <string name="header_salesticket_footer_btn_ok">نعم</string>
+    <string name="header_salesticket_footer_btn_no">لا</string>
 
 
 

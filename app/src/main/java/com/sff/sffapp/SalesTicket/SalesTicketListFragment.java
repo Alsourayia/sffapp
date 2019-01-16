@@ -112,8 +112,8 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
                 }
             };
             AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-            builder.setMessage(getString(R.string.header_salesticket_footer_btn_save)).setPositiveButton("نعم", dialogClickListener)
-                    .setNegativeButton("لا", dialogClickListener).show();
+            builder.setMessage(getString(R.string.header_salesticket_footer_btn_save)).setPositiveButton(getString(R.string.header_salesticket_footer_btn_ok), dialogClickListener)
+                    .setNegativeButton(getString(R.string.header_salesticket_footer_btn_no), dialogClickListener).show();
         }
         /********************************************************************************************/
     }
