@@ -1,4 +1,7 @@
 package com.sff.sffapp.SalesTicket;
+/*
+edited by mb
+ */
 public class SalesTicketAddItemCell
 {
     public int v_ser_no;

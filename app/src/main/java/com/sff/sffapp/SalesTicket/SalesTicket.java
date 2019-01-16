@@ -1,4 +1,7 @@
 package com.sff.sffapp.SalesTicket;
+/*
+edited by mb
+ */
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.FragmentManager;
@@ -26,13 +29,10 @@ import java.util.ArrayList;
 public class SalesTicket extends AppCompatActivity implements ConnectionInterface,View.OnClickListener
 {
     /********************************************************************************************/
-    private FrameLayout  frameLayoutfram1 , FrameAddItem;
-    String  currFragment,cust_type,location_type,channel_type ;
+    private FrameLayout  frameLayoutfram1 ;
+    String  currFragment ;
     public  Toolbar myToolbar,myFooterToolbar;
-    SpinnerDialog spinnerDialog ;
-    EditText txt_contact_person_name,txt_cust_mob_no ,txt_cust_email,txt_notes;
-    TextView txtcusttype,txt_loc_type,txt_channel,p8009_txt_ticket_type_desc ;
-    JSONObject save_josn ;
+    TextView p8009_txt_ticket_type_desc ;
     public  String trans_date,p8009_txt_ticket_type_desc_val,p8009_txt_cust_type_val,p8009_txt_loc_type_val,p8009_txt_channel_val,p8009_txt_cntry_val,p8009_txt_city_val,p8009_txt_district_val;
     /********************************************************************************************/
     @Override

@@ -1,4 +1,7 @@
 package com.sff.sffapp.SalesTicket;
+/*
+edited by mb
+ */
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

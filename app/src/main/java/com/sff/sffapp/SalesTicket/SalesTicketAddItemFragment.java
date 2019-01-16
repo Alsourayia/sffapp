@@ -1,4 +1,7 @@
 package com.sff.sffapp.SalesTicket;
+/*
+edited by mb
+ */
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
