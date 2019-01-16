@@ -17,17 +17,13 @@ import org.ksoap2.serialization.SoapObject;
 public class SalesTicketAddItemFragment extends Fragment  implements View.OnClickListener
 {
     SpinnerDialog spinnerDialog ;
-    TextView p8009_txt_mgrp_desc ;
-    String p8009_txt_mgrp_desc_val;
-    TextView p8009_txt_item_desc;
-    String p8009_txt_item_desc_val  ;
-    TextView p8009_txt_color_name;
-    String p8009_txt_color_name_val ;
-    String item_price ;
+    TextView p8009_txt_mgrp_desc ,p8009_txt_item_desc,p8009_txt_color_name;
+    String p8009_txt_mgrp_desc_val,p8009_txt_item_desc_val,p8009_txt_color_name_val,item_price;
     EditText p8009_txt_price;
     JSONObject json ;
     public SalesTicketAddItemFragment()
     {
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -85,29 +81,42 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
         if (v.getId() == R.id.footer_btn_check)
         {
             /********************************************************************************************/
-            FragmentManager fm1 = this.getActivity().getSupportFragmentManager();
-            SalesTicketAddItemCell mItemCell ;
+            if (
+                    (p8009_txt_mgrp_desc.getText().toString()==null || p8009_txt_mgrp_desc_val==null) &&
+                    (p8009_txt_item_desc.getText().toString()==null || p8009_txt_item_desc_val==null) &&
+                    (p8009_txt_color_name.getText().toString()==null || p8009_txt_color_name_val==null)
+                )
+            {
+                Toast.makeText(this.getContext(), getString(R.string.msg_no_items_assign_to_list),Toast.LENGTH_SHORT).show();
+            }
             /********************************************************************************************/
-            mItemCell = new SalesTicketAddItemCell();
-            mItemCell.v_ser_no = (((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.size()+1);
-            mItemCell.v_mgrp_desc = p8009_txt_mgrp_desc.getText().toString();
-            mItemCell.v_mgrp_code = p8009_txt_mgrp_desc_val;
-            mItemCell.v_item_desc = p8009_txt_item_desc.getText().toString();
-            mItemCell.v_item_code = p8009_txt_item_desc_val ;
-            mItemCell.v_color_name = p8009_txt_color_name.getText().toString();
-            mItemCell.v_color_code = p8009_txt_color_name_val;
-            mItemCell.v_note = ((EditText)fm1.findFragmentByTag("SalesTicketAddItemFragment").getView().findViewById(R.id.p8009_txt_item_note)).getText().toString();
-            mItemCell.v_item_price= ((EditText)fm1.findFragmentByTag("SalesTicketAddItemFragment").getView().findViewById(R.id.p8009_txt_price)).getText().toString();
-            /********************************************************************************************/
-            ((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.add(0,mItemCell);
-            ((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemListAdapter.notifyDataSetChanged();
-            /********************************************************************************************/
-            fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
-            /********************************************************************************************/
-            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
-            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
-            /********************************************************************************************/
-            fm1.beginTransaction().remove(this).commit();
+            else
+            {
+                /********************************************************************************************/
+                FragmentManager fm1 = this.getActivity().getSupportFragmentManager();
+                SalesTicketAddItemCell mItemCell ;
+                /********************************************************************************************/
+                mItemCell = new SalesTicketAddItemCell();
+                mItemCell.v_ser_no = (((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.size()+1);
+                mItemCell.v_mgrp_desc = p8009_txt_mgrp_desc.getText().toString();
+                mItemCell.v_mgrp_code = p8009_txt_mgrp_desc_val;
+                mItemCell.v_item_desc = p8009_txt_item_desc.getText().toString();
+                mItemCell.v_item_code = p8009_txt_item_desc_val ;
+                mItemCell.v_color_name = p8009_txt_color_name.getText().toString();
+                mItemCell.v_color_code = p8009_txt_color_name_val;
+                mItemCell.v_note = ((EditText)fm1.findFragmentByTag("SalesTicketAddItemFragment").getView().findViewById(R.id.p8009_txt_item_note)).getText().toString();
+                mItemCell.v_item_price= ((EditText)fm1.findFragmentByTag("SalesTicketAddItemFragment").getView().findViewById(R.id.p8009_txt_price)).getText().toString();
+                /********************************************************************************************/
+                ((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.add(0,mItemCell);
+                ((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemListAdapter.notifyDataSetChanged();
+                /********************************************************************************************/
+                fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
+                /********************************************************************************************/
+                ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
+                ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
+                /********************************************************************************************/
+                fm1.beginTransaction().remove(this).commit();
+            }
         }
         /********************************************************************************************/
         else if (v.getId() == R.id.footer_btn_cancel)

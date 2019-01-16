@@ -32,7 +32,6 @@ public class ChqPaymentFragment extends Fragment implements View.OnClickListener
     final Calendar calendar= Calendar.getInstance();
     public ChqPaymentFragment()
     {
-        // Required empty public constructor
         payment_fragment_txt_chq_bank_code = "";
     }
     @Override
@@ -47,7 +46,8 @@ public class ChqPaymentFragment extends Fragment implements View.OnClickListener
     }
     @Override
     public void onClick(View v) {
-        if (v.getId()== R.id.payment_fragment_txt_chq_bank_desc) {
+        if (v.getId()== R.id.payment_fragment_txt_chq_bank_desc)
+        {
         spinnerDialog = new SpinnerDialog(this.getActivity(), "Select or Search Item", "CHQBANK", "val2", this.getContext(), "9999","");
         spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
             @Override

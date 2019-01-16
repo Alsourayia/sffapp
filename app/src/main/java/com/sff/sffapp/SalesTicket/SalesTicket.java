@@ -65,26 +65,15 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
             TextView  p8009_txt_ticket_type_desc ;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales_ticket);
 
-     /*   p8009_txt_cust_type_val ="" ;
-        p8009_txt_loc_type_val ="" ;
-        p8009_txt_channel_val ="" ;
-        p8009_txt_cntry_val ="" ;
-        p8009_txt_city_val ="" ;
-        p8009_txt_district_val ="" ;
-*/
-
-
         myToolbar = (Toolbar) findViewById(R.id.sff_toolbar);
         setSupportActionBar(myToolbar);
-
         myFooterToolbar = (Toolbar) findViewById(R.id.sff_footerBar);
-
         setSupportActionBar(myToolbar);
-
         myToolbar.findViewById(R.id.toolbar_txt_title).setVisibility(View.VISIBLE);
         ((TextView)myToolbar.findViewById(R.id.toolbar_txt_title)).setText("Sales Ticket");
         myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
@@ -92,17 +81,13 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         myToolbar.findViewById(R.id.toolbar_btn_prev).setOnClickListener(this);
         myFooterToolbar.findViewById(R.id.footer_btn_save).setOnClickListener(this);
         frameLayoutfram1  = (FrameLayout)findViewById(R.id.FragmentContainer);
-
         SalesTicketStartFragment f1 = new SalesTicketStartFragment();
         FragmentManager fm1 = getSupportFragmentManager();
         FragmentTransaction ftrans = fm1.beginTransaction();
         ftrans.addToBackStack(null);
         ftrans.add(R.id.FragmentContainer,f1,"SalesTicketStartFragment").commit();
         currFragment = "SalesTicketStartFragment" ;
-
-
     }
-
     @Override
     public void onClick(View v)
     {
@@ -211,13 +196,11 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         }
 
     }
-
     @Override
     public void onBackPressed()
     {
 
     }
-
     public void dbSave()
     {
         //((SalesTicket)this.getActivity()).save_josn = new JSONObject( );
@@ -226,7 +209,6 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         JSONArray jsonArrayList = new JSONArray();
         ArrayList<SalesTicketAddItemCell> addItemArray;
         addItemArray = ((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray;
-
         try
         {
             j.put("USER_STORE", userInfo.getUSER_STORE());
