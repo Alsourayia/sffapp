@@ -40,7 +40,7 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
 
     public SalesTicketListFragment()
     {
-        // Required empty public constructor
+
     }
 
     @Override

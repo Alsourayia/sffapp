@@ -33,14 +33,11 @@ public class SalesTicketListAdapter extends BaseAdapter
         TextView txt_item_desc;
         TextView txt_color_name;
         TextView txt_note;
-        //TextView txt_from_qnty;
-        TextView txt_qnty;
-        TextView txt_price;
-        TextView lbl_unit ;
 
-        TextView p8009_txt_value ;
-        TextView p8009_txt_vat_value ;
-        TextView p8009_txt_value_after_vat ;
+        TextView txt_price;
+
+
+
     }
 
     @Override
@@ -72,12 +69,7 @@ public class SalesTicketListAdapter extends BaseAdapter
             holder.txt_item_desc = view.findViewById(R.id.p8009_txt_item_desc);
             holder.txt_color_name = view.findViewById(R.id.p8009_txt_color_name);
             holder.txt_note = view.findViewById(R.id.p8009_txt_item_note);
-            //holder.txt_from_qnty = view.findViewById(R.id.p8009_txt_qnty);
             holder.txt_price = view.findViewById(R.id.p8009_txt_price);
-
-
-
-
             view.setTag(holder);
         }
         else
@@ -90,13 +82,7 @@ public class SalesTicketListAdapter extends BaseAdapter
         holder.txt_item_desc.setText(this.salesTicketListArrayList.get(position).v_item_desc);
         holder.txt_color_name.setText(this.salesTicketListArrayList.get(position).v_color_name);
         holder.txt_note.setText(this.salesTicketListArrayList.get(position).v_note);
-        //holder.txt_from_qnty.setText(this.salesTicketListArrayList.get(position).v_from_qnty);
-        //holder.txt_to_qnty.setText(this.salesTicketListArrayList.get(position).v_to_qnty);
-
         holder.txt_price.setText(this.salesTicketListArrayList.get(position).v_item_price);
-
-
-
 
         return view;
     }

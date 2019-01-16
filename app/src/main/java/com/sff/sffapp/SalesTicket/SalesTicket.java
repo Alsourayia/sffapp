@@ -53,8 +53,16 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
 
 
 
-    public  String  trans_date,p8009_txt_ticket_type_desc_val ,  p8009_txt_cust_type_val ,p8009_txt_loc_type_val , p8009_txt_channel_val  ,p8009_txt_cntry_val  ,p8009_txt_city_val  , p8009_txt_district_val   ;
-    TextView  p8009_txt_ticket_type_desc ;
+    public  String
+            trans_date,
+            p8009_txt_ticket_type_desc_val ,
+            p8009_txt_cust_type_val ,
+            p8009_txt_loc_type_val ,
+            p8009_txt_channel_val  ,
+            p8009_txt_cntry_val  ,
+            p8009_txt_city_val  ,
+            p8009_txt_district_val   ;
+            TextView  p8009_txt_ticket_type_desc ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,7 +182,7 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         }
         else  if ( v.getId()== R.id.p8009_txt_cust_type)
         {
-            Toast.makeText(this, "Must enter customer name!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "يجب ادخال اسم العميل", Toast.LENGTH_SHORT).show();
         }
         else if (v.getId() == R.id.footer_btn_save)
         {
@@ -285,7 +293,8 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         SoapObject obj1;
         SoapObject obj2;
         obj1=obj;
-        String val1_JSON_OUT=null ,val2_JSON_OUT=null;
+        String val1_JSON_OUT=null ,
+               val2_JSON_OUT=null;
         if (obj1 != null)
         {
             obj2 = (SoapObject) obj.getProperty(0);
@@ -295,7 +304,7 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         }
         else
         {
-            Toast.makeText(SalesTicket.this, "No data found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SalesTicket.this, "لا توجد بيانات", Toast.LENGTH_SHORT).show();
         }
 
         if (val1_JSON_OUT.equals("T"))
