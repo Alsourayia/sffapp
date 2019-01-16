@@ -49,6 +49,8 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
     public void onStart()
     {
         super.onStart();
+        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.VISIBLE);
         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.VISIBLE);
         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
@@ -62,9 +64,16 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
         {
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.VISIBLE);
+            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.VISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
         }
         else
         {
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.VISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.VISIBLE);
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
@@ -72,7 +81,8 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
         }
     }
     @Override
-    public void onStop() {
+    public void onStop()
+    {
         super.onStop();
     }
     public void onClick(View v)
