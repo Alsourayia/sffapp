@@ -1,0 +1,602 @@
+Index: app/src/main/java/com/sff/sffapp/SalesTicket/SalesTicketStartFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/sff/sffapp/SalesTicket/SalesTicketStartFragment.java	(revision 92ad309d573fb2c94976f1e2706827cb82b2a5c7)
++++ app/src/main/java/com/sff/sffapp/SalesTicket/SalesTicketStartFragment.java	(date 1547626845959)
+@@ -16,35 +16,30 @@
+ import org.json.JSONException;
+ import org.json.JSONObject;
+ import org.ksoap2.serialization.SoapObject;
+-/**
+- * A simple {@link Fragment} subclass.
+- */
+-public class SalesTicketStartFragment extends Fragment   implements View.OnClickListener   {
++public class SalesTicketStartFragment extends Fragment   implements View.OnClickListener
++{
+     SpinnerDialog spinnerDialog ;
+-    TextView p8009_txt_ticket_type_desc,
+-             p8009_txt_cust_type  ,
+-             p8009_txt_loc_type ,
+-             p8009_txt_channel  ,
+-             p8009_txt_cntry  ,
+-             p8009_txt_city  ,
+-             p8009_txt_district  ;
+-    JSONObject json ;
+-        public SalesTicketStartFragment()
+-        {
+-        }
++    TextView      p8009_txt_ticket_type_desc,p8009_txt_cust_type  ,p8009_txt_loc_type ,p8009_txt_channel  ,p8009_txt_cntry  ,p8009_txt_city  ,p8009_txt_district ;
++    JSONObject    json ;
++    public SalesTicketStartFragment()
++    {
++    }
+     @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+     {
+-        ((TextView)((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_txt_title)).setText(getString(R.string.headerTitle_STARTSALESTICKET));
++        /********************************************************************************************/
++        ((TextView)((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_txt_title)).setText(getString(R.string.headerTitle_SalesTicketStartFragment));
+         View v = inflater.inflate(R.layout.fragment_sales_ticket_start_fragment, container, false);
+         v.findViewById(R.id.p8009_txt_customer_name).requestFocus();
+-        p8009_txt_ticket_type_desc =  ((TextView)v.findViewById(R.id.p8009_txt_ticket_type_desc)) ;
+-        p8009_txt_cust_type = ((TextView)v.findViewById(R.id.p8009_txt_cust_type)) ;
+-        p8009_txt_loc_type = ((TextView)v.findViewById(R.id.p8009_txt_loc_type)) ;
+-        p8009_txt_channel = ((TextView)v.findViewById(R.id.p8009_txt_channel)) ;
+-        p8009_txt_cntry = ((TextView)v.findViewById(R.id.p8009_txt_cntry)) ;
+-        p8009_txt_city = ((TextView)v.findViewById(R.id.p8009_txt_city)) ;
+-        p8009_txt_district = ((TextView)v.findViewById(R.id.p8009_txt_district)) ;
++        /********************************************************************************************/
++        p8009_txt_ticket_type_desc  =  ((TextView)v.findViewById(R.id.p8009_txt_ticket_type_desc)) ;
++        p8009_txt_cust_type         = ((TextView)v.findViewById(R.id.p8009_txt_cust_type)) ;
++        p8009_txt_loc_type          = ((TextView)v.findViewById(R.id.p8009_txt_loc_type)) ;
++        p8009_txt_channel           = ((TextView)v.findViewById(R.id.p8009_txt_channel)) ;
++        p8009_txt_cntry             = ((TextView)v.findViewById(R.id.p8009_txt_cntry)) ;
++        p8009_txt_city              = ((TextView)v.findViewById(R.id.p8009_txt_city)) ;
++        p8009_txt_district          = ((TextView)v.findViewById(R.id.p8009_txt_district)) ;
++        /********************************************************************************************/
+         p8009_txt_ticket_type_desc.setOnClickListener(this);
+         p8009_txt_cust_type.setOnClickListener(this) ;
+         p8009_txt_loc_type.setOnClickListener(this) ;
+@@ -52,72 +47,80 @@
+         p8009_txt_cntry.setOnClickListener(this) ;
+         p8009_txt_city.setOnClickListener(this) ;
+         p8009_txt_district.setOnClickListener(this) ;
++        /********************************************************************************************/
+         return v ;
+     }
+     public void onClick(View v) {
+-        if (v.getId() == R.id.p8009_txt_ticket_type_desc) {
++        /********************************************************************************************/
++        if (v.getId() == R.id.p8009_txt_ticket_type_desc)
++        {
+             spinnerDialog = new SpinnerDialog(this.getActivity(), "نوع التذكرة", "TICKETTYPE", "val2", this.getContext(), "8009", "");
+             spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                                                    @Override
+                                                    public void onClick(String item, int position, SoapObject obj) {
+            p8009_txt_ticket_type_desc.setText(item);
+-           ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_ticket_type_desc_val = obj.getProperty("val1").toString();
+-
+-                                                   }
++           ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_ticket_type_desc_val = obj.getPrimitiveProperty("val1").toString(); }
+                                                }
+             );
+-        }else if (v.getId() == R.id.p8009_txt_cust_type) {
+-
++        }
++        /********************************************************************************************/
++        else if (v.getId() == R.id.p8009_txt_cust_type)
++        {
+             spinnerDialog = new SpinnerDialog(this.getActivity(), "نوع العميل", "CUSTTYPE", "val2", this.getContext(), "8009", "");
+             spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                 @Override
+                 public void onClick(String item, int position, SoapObject obj) {
+                     p8009_txt_cust_type.setText(item);
+-                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cust_type_val = obj.getProperty("val1").toString();
++                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cust_type_val = obj.getPrimitiveProperty("val1").toString();
+ 
+                 }
+             }
+             );
+-        } else if (v.getId() == R.id.p8009_txt_loc_type) {
++        }
++        /********************************************************************************************/
++        else if (v.getId() == R.id.p8009_txt_loc_type)
++        {
+             spinnerDialog = new SpinnerDialog(this.getActivity(), "نوع الموقع", "LOCATIONTYPE", "val2", this.getContext(), "8009", "");
+             spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                 @Override
+                 public void onClick(String item, int position, SoapObject obj) {
+                     p8009_txt_loc_type.setText(item);
+ 
+-                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_loc_type_val = obj.getProperty("val1").toString();
+-
++                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_loc_type_val = obj.getPrimitiveProperty("val1").toString();
+                 }
+             });
+         }
+-        else if (v.getId() == R.id.p8009_txt_channel) {
++        /********************************************************************************************/
++        else if (v.getId() == R.id.p8009_txt_channel)
++        {
+             spinnerDialog = new SpinnerDialog(this.getActivity(), "نوع قناة الاتصال", "CONNECTIONTYPE", "val2", this.getContext(), "8009", "");
+             spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                 @Override
+                 public void onClick(String item, int position, SoapObject obj) {
+                     p8009_txt_channel.setText(item);
+-                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_channel_val = obj.getProperty("val1").toString();
++                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_channel_val = obj.getPrimitiveProperty("val1").toString();
+                 }
+             });
+         }
+-        else if (v.getId() == R.id.p8009_txt_cntry) {
+-
++        /********************************************************************************************/
++        else if (v.getId() == R.id.p8009_txt_cntry)
++        {
+             spinnerDialog = new SpinnerDialog(this.getActivity(), "البلد", "CNTRY", "val2", this.getContext(), "8009", "");
+             spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                 @Override
+                 public void onClick(String item, int position, SoapObject obj) {
+                     p8009_txt_cntry.setText(item);
+-                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val = obj.getProperty("val1").toString();
++                    ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val = obj.getPrimitiveProperty("val1").toString();
+                     p8009_txt_city.setText("المدينة");
+                     ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_city_val = null;
+                     p8009_txt_district.setText("الحي");
+                     ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_district_val = null;
+                 }
+-
+             });
+         }
+-
+-        else if ( v.getId() == R.id.p8009_txt_city ) {
++        /********************************************************************************************/
++        else if ( v.getId() == R.id.p8009_txt_city )
++        {
+             if (((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val == null) {
+                 Toast.makeText(this.getContext(), "يجب اختيار البلد", Toast.LENGTH_SHORT).show();
+                 p8009_txt_cntry.requestFocus();
+@@ -126,31 +129,27 @@
+                 try {
+                     json.put("JSON_CNTRY_CODE", ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val);
+                     spinnerDialog = new SpinnerDialog(this.getActivity(), "المدينة", "CITY", "val2", this.getContext(), "8009", json.toString());
+-
+                     spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                         @Override
+                         public void onClick(String item, int position, SoapObject obj) {
+                             p8009_txt_city.setText(item);
+-                            ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_city_val = obj.getProperty("val1").toString();
++                            ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_city_val = obj.getPrimitiveProperty("val1").toString();
+                             p8009_txt_district.setText("الحي");
+                             ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_district_val = null;
+                         }
+                     });
+-
+                 } catch (Exception e)
+-
+                 {
+-
+                 }
+             }
+         }
++        /********************************************************************************************/
+         else if (v.getId() == R.id.p8009_txt_district)
+         {
+-            if (((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val ==null  ){
++            if (((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val == null  ){
+                 Toast.makeText(this.getContext(), "يجب اختيار البلد والمدينة", Toast.LENGTH_SHORT).show();
+                 p8009_txt_cntry.requestFocus();
+             }
+-
+             if ( ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_city_val == null ){
+                 Toast.makeText(this.getContext(), "يجب اختيار البلد والمدينة", Toast.LENGTH_SHORT).show();
+                 p8009_txt_city.requestFocus();
+@@ -159,51 +158,40 @@
+                 try
+                 {
+                     json.put("JSON_CNTRY_CODE" , p8009_txt_cntry ) ;
+-                    json.put("JSON_CITY_CODE" , p8009_txt_city ) ;
++                    json.put("JSON_CITY_CODE"  , p8009_txt_city  ) ;
+                     spinnerDialog = new SpinnerDialog(this.getActivity(), "اختيار الحي", "DISTRICTS", "val2", this.getContext(), "8009", json.toString());
+-
+                     spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
+                         @Override
+                         public void onClick(String item, int position, SoapObject obj) {
+                             p8009_txt_district.setText(item);
+-                            ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_district_val = obj.getProperty("val1").toString();
+-
+-
++                            ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_district_val = obj.getPrimitiveProperty("val1").toString();
+                             //Toast.makeText(SalesTicket_old.this, CITY_code +"" , Toast.LENGTH_SHORT).show();
+                         }
+                     });
+-
+                 } catch (JSONException e)
+ 
+                 {
+                     e.printStackTrace();
+                 }
+-
+             }
+         }
+-
+-
++        /********************************************************************************************/
+     }
+-
+     @Override
+     public void onStart() {
+         super.onStart();
+-
+         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
+         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+     }
+-
+     @Override
+     public void onHiddenChanged(boolean hidden) {
+         super.onHiddenChanged(hidden);
+         if (hidden) {
+-
+-            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
++            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.VISIBLE);
+             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
+         }
+         else
+         {
+-
+             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
+             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+         }
+Index: app/src/main/res/layout/sales_ticket_view_3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/sales_ticket_view_3.xml	(revision 92ad309d573fb2c94976f1e2706827cb82b2a5c7)
++++ app/src/main/res/layout/sales_ticket_view_3.xml	(date 1547624676575)
+@@ -79,7 +79,7 @@
+             android:layout_marginLeft="5dp"
+             android:layout_marginRight="5dp"
+             android:layout_marginBottom="10dp"
+-            android:background="@android:color/background_light"
++            android:background="@drawable/required_item"
+             android:ems="10"
+             android:hint="العنوان"
+             android:inputType="text"
+@@ -93,7 +93,7 @@
+             android:layout_marginLeft="5dp"
+             android:layout_marginRight="5dp"
+             android:layout_marginBottom="10dp"
+-            android:background="@android:color/background_light"
++            android:background="@drawable/required_item"
+             android:ems="10"
+             android:hint="اسم الشارع"
+             android:inputType="phone"
+@@ -108,7 +108,7 @@
+             android:layout_marginLeft="5dp"
+             android:layout_marginRight="5dp"
+             android:layout_marginBottom="50dp"
+-            android:background="@android:color/background_light"
++            android:background="@drawable/required_item"
+             android:ems="10"
+             android:hint="أقرب معلم"
+             android:inputType="text"
+Index: app/src/main/java/com/sff/sffapp/SalesTicket/SalesTicketListFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/sff/sffapp/SalesTicket/SalesTicketListFragment.java	(revision 92ad309d573fb2c94976f1e2706827cb82b2a5c7)
++++ app/src/main/java/com/sff/sffapp/SalesTicket/SalesTicketListFragment.java	(date 1547628193682)
+@@ -1,6 +1,4 @@
+ package com.sff.sffapp.SalesTicket;
+-
+-
+ import android.app.AlertDialog;
+ import android.content.DialogInterface;
+ import android.os.Bundle;
+@@ -17,131 +15,75 @@
+ import android.widget.ListView;
+ import android.widget.TextView;
+ import android.widget.Toast;
+-
+ import com.sff.sffapp.R;
+-
+ import org.ksoap2.serialization.SoapObject;
+-
+ import java.util.ArrayList;
+-
+-
+ import com.sff.sffapp.database.ConnectionInterface;
+-
+-
+-
+-/**
+- * A simple {@link Fragment} subclass.
+- */
+-public class SalesTicketListFragment extends Fragment implements View.OnClickListener , ConnectionInterface {
+-
++public class SalesTicketListFragment extends Fragment implements View.OnClickListener , ConnectionInterface
++{
+     ListView listView;
+     ArrayList<SalesTicketAddItemCell> addItemArray;
+     SalesTicketListAdapter addItemListAdapter;
+-
+     public SalesTicketListFragment()
+     {
+-
+     }
+-
+     @Override
+-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+-                             Bundle savedInstanceState) {
+-        ((TextView) ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_txt_title)).setText("Sales Ticket - Item   ");
+-
+-        // ((SalesTicket)this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).requestFocus();
+-
+-
+-        // Inflate the layout for this fragment
++    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
++    {
++        ((TextView) ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_txt_title)).setText(getString(R.string.headerTitle_SalesTicketListFragment));
++        /********************************************************************************************/
+         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setOnClickListener(this);
+         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setOnClickListener(this);
+-
++        /********************************************************************************************/
+         View v = inflater.inflate(R.layout.fragment_sales_ticket_list_fragment, container, false);
+-
+         listView = v.findViewById(R.id.p8009_list_items);
+         addItemArray = new ArrayList<SalesTicketAddItemCell>();
+-
+-
+         addItemListAdapter = new SalesTicketListAdapter(this.getContext(), this.addItemArray);
+         listView.setAdapter(addItemListAdapter);
+-
++        /********************************************************************************************/
+         InputMethodManager inputManager = (InputMethodManager) this.getActivity().getSystemService(this.getContext().INPUT_METHOD_SERVICE);
+-
+-
+         return v;
+     }
+-
+     @Override
+     public void onStart()
+     {
+         super.onStart();
+-        SalesTicket f1 = new SalesTicket();
+-        FragmentManager fm1 = this.getActivity().getSupportFragmentManager();
+-
+         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.VISIBLE);
+         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.VISIBLE);
+-        if ( ((SalesTicket) this.getActivity()).p8009_txt_ticket_type_desc_val.equals("003") )
+-        {
+-            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+-            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+-        }
+-        else
+-        {
+-            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
+-            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+-        }
++        ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
++        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+     }
+-
+     @Override
+     public void onHiddenChanged(boolean hidden)
+     {
+         super.onHiddenChanged(hidden);
+-        if (hidden) {
+-
++        if (hidden)
++        {
+             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
+             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
+-            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
++            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+         }
+         else
+         {
+             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.VISIBLE);
+             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.VISIBLE);
+-            if ( ((SalesTicket) this.getActivity()).p8009_txt_ticket_type_desc_val.equals("003") )
+-            {
+-                ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+-                ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+-            }
+-            else {
+-                ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
+-                ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+-            }
+-
+-
++            ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
++            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+         }
+-/*
+-hide keyboard long version
+-        InputMethodManager imm = (InputMethodManager) this.getActivity().getSystemService(this.getActivity().INPUT_METHOD_SERVICE);
+-        //Find the currently focused view, so we can grab the correct window token from it.
+-        View view = this.getActivity().getCurrentFocus();
+-        //If no view currently has focus, create a new one, just so we can grab a window token from it
+-        if (view == null) {
+-            view = new View(this.getActivity());
+-        }
+-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+-*/
+-
+-        try {
++        try
++        {
+             ((InputMethodManager) this.getActivity().getSystemService(this.getActivity().INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(this.getActivity().getCurrentFocus().getWindowToken(), 0);
+-        } catch (Exception e) {
++        } catch (Exception e)
++        {
+             e.getStackTrace();
+         }
+-
+     }
+-
+-    public void onClick(View v) {
+-
+-
+-        if (v.getId() == R.id.footer_btn_add) {
++    public void onClick(View v)
++    {
++        /********************************************************************************************/
++        if (v.getId() == R.id.footer_btn_add)
++        {
+             SalesTicketAddItemFragment f1 = new SalesTicketAddItemFragment();
+             FragmentManager fm1 = this.getActivity().getSupportFragmentManager();
+             fm1.beginTransaction().hide(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
+@@ -149,8 +91,11 @@
+             ftrans.addToBackStack(null);
+             ftrans.add(R.id.FragmentContainer, f1, "SalesTicketAddItemFragment").commit();
+         }
+-        else if (v.getId() == R.id.footer_btn_save) {
+-            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
++        /********************************************************************************************/
++        else if (v.getId() == R.id.footer_btn_save)
++        {
++            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
++            {
+                 @Override
+                 public void onClick(DialogInterface dialog, int which) {
+                     switch (which) {
+@@ -158,31 +103,24 @@
+                             //Yes button clicked
+                             ((SalesTicket)SalesTicketListFragment.this.getActivity()).dbSave();
+                             break;
+-
+                         case DialogInterface.BUTTON_NEGATIVE:
+                             //No button clicked
+                             break;
+                     }
+                 }
+             };
+-
+             AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+             builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener)
+                     .setNegativeButton("No", dialogClickListener).show();
+         }
++        /********************************************************************************************/
+     }
+-
+-
+-
+     @Override
+     public void getResult(SoapObject obj, String status, String status_msg, String methodName, String method_id) {
+-
+         SoapObject obj2;
+         obj2 = (SoapObject) obj.getProperty(0);
+         obj2.getProperty("val1").toString();
+-        Log.i("result", obj2.getProperty("val1").toString());
+-        Toast.makeText(this.getContext(), obj2.getProperty("val1").toString(), Toast.LENGTH_SHORT).show();
+-
+-
++        Log.i("result", obj2.getPrimitiveProperty("val1").toString());
++        Toast.makeText(this.getContext(), obj2.getPrimitiveProperty("val1").toString(), Toast.LENGTH_SHORT).show();
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision 92ad309d573fb2c94976f1e2706827cb82b2a5c7)
++++ app/src/main/res/values/strings.xml	(date 1547626696628)
+@@ -10,7 +10,8 @@
+     <string name="spainner_headeTitle_for_activity">اختار نوع النشاط</string>
+     <string name="spainner_headerTitle_for_item">اختار الصنف</string>
+     <string name="spainner_headerTitle_for_color">اختار اللون</string>
+-    <string name="headerTitle_STARTSALESTICKET">تذكرة مبيعات</string>
++    <string name="headerTitle_SalesTicketStartFragment">تذكرة مبيعات</string>
++    <string name="headerTitle_SalesTicketListFragment">اضافة الاصناف لتذكرة المبيعات</string>
+ 
+ 
+ 
+Index: app/src/main/java/com/sff/sffapp/FollowUp/FollowUpListAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/sff/sffapp/FollowUp/FollowUpListAdapter.java	(revision 92ad309d573fb2c94976f1e2706827cb82b2a5c7)
++++ app/src/main/java/com/sff/sffapp/FollowUp/FollowUpListAdapter.java	(date 1547626460387)
+@@ -301,7 +301,6 @@
+                     }
+                     catch ( Exception e )
+                     {
+-
+                         Toast.makeText(mContext, "CCS_TEAM_CODE!", Toast.LENGTH_LONG).show();
+                     }
+                     /********************************************/
+@@ -316,7 +315,6 @@
+     }
+     @Override
+     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+-
+         if ( view.getId()== R.id.p8002_txt_measurement_appt || view.getId() == R.id.p8002_btn_measure_date)  {
+             JSONObject json;
+             try
+@@ -326,22 +324,15 @@
+                 json.put("TICKETPK" , ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).ticketNo_desc) ;
+                 json.put("USER_CODE" , userInfo.getUSER_NO()) ;
+                 json.put("APPT_DATE" ,dayOfMonth+ "-" + (month+1) +"-" + year  ) ;
+-
+                 DBconnection dBconnection = new DBconnection(json.toString() , "TICKET_ACTIONS" , this , mContext , "UPDATE_MAPPT"  ) ;
+                 dBconnection.execute();
+                 ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).measurement_appt =dayOfMonth+ "-" + (month+1) +"-" + year  ;
+-
+-
+                 this.notifyDataSetChanged();
+             }
+             catch ( Exception e )
+             {
+-
+                 Toast.makeText(mContext, "!!ORDER_INFO!!", Toast.LENGTH_LONG).show();
+             }
+-
+-
+-
+         }
+         else if ( view.getId()== R.id.p8002_txt_install_appt || view.getId() == R.id.p8002_btn_install_date)  {
+             JSONObject json;
+@@ -352,24 +343,16 @@
+                 json.put("TICKETPK" , ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).ticketNo_desc) ;
+                 json.put("USER_CODE" , userInfo.getUSER_NO()) ;
+                 json.put("APPT_DATE" ,dayOfMonth+ "-" + (month+1) +"-" + year  ) ;
+-
+                 DBconnection dBconnection = new DBconnection(json.toString() , "TICKET_ACTIONS" , this , mContext , "UPDATE_IAPPT"  ) ;
+-
+                 dBconnection.execute();
+                 ticketFollowUpArrayList.get(Integer.parseInt(view.getTag().toString())).install_assign_date_appt =dayOfMonth+ "-" + (month+1) +"-" + year  ;
+-
+                 this.notifyDataSetChanged();
+             }
+             catch ( Exception e )
+             {
+-
+                 Toast.makeText(mContext, "!!ORDER_INFO!!", Toast.LENGTH_LONG).show();
+             }
+-
+-
+-
+         }
+-
+         else
+         {
+             Toast.makeText(mContext, "TAG=ingal3", Toast.LENGTH_SHORT).show();
+@@ -429,7 +412,7 @@
+             {
+                 Toast.makeText(mContext, "No data found-CCS_TEAM_CODE", Toast.LENGTH_SHORT).show();
+             }
+-        }else if (method_id== "UPDATE_MAPPT" ) {
++        }else if (method_id == "UPDATE_MAPPT" ) {
+             if (obj1 != null)
+             {
+                 obj2 = (SoapObject) obj.getProperty(0);
