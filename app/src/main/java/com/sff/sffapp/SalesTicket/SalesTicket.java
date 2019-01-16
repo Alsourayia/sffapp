@@ -1,8 +1,5 @@
 package com.sff.sffapp.SalesTicket;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,76 +7,57 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.sff.sffapp.Payment.MainPaymentFragment;
 import com.sff.sffapp.R;
 import com.sff.sffapp.database.ConnectionInterface;
 import com.sff.sffapp.database.DBconnection;
 import com.sff.sffapp.lovs.SpinnerDialog;
 import com.sff.sffapp.menu.userInfo;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksoap2.serialization.SoapObject;
-
 import java.util.ArrayList;
-
-public class SalesTicket extends AppCompatActivity implements ConnectionInterface,View.OnClickListener {
+public class SalesTicket extends AppCompatActivity implements ConnectionInterface,View.OnClickListener
+{
+    /********************************************************************************************/
     private FrameLayout  frameLayoutfram1 , FrameAddItem;
-    String currFragment ;
-    public    Toolbar myToolbar;
-    public Toolbar myFooterToolbar ;
-
+    String  currFragment,cust_type,location_type,channel_type ;
+    public  Toolbar myToolbar,myFooterToolbar;
     SpinnerDialog spinnerDialog ;
-    EditText txt_contact_person_name ;
-    EditText txt_cust_mob_no;
-    EditText txt_cust_email ;
-    TextView txtcusttype ;
-    String cust_type ;
-    TextView txt_loc_type ;
-    String location_type;
-    TextView txt_channel;
-    String channel_type;
-    EditText txt_notes ;
-
+    EditText txt_contact_person_name,txt_cust_mob_no ,txt_cust_email,txt_notes;
+    TextView txtcusttype,txt_loc_type,txt_channel,p8009_txt_ticket_type_desc ;
     JSONObject save_josn ;
-
-
-
-    public  String
-            trans_date,
-            p8009_txt_ticket_type_desc_val ,
-            p8009_txt_cust_type_val ,
-            p8009_txt_loc_type_val ,
-            p8009_txt_channel_val  ,
-            p8009_txt_cntry_val  ,
-            p8009_txt_city_val  ,
-            p8009_txt_district_val   ;
-            TextView  p8009_txt_ticket_type_desc ;
-
+    public  String trans_date,p8009_txt_ticket_type_desc_val,p8009_txt_cust_type_val,p8009_txt_loc_type_val,p8009_txt_channel_val,p8009_txt_cntry_val,p8009_txt_city_val,p8009_txt_district_val;
+    /********************************************************************************************/
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales_ticket);
-
+        /********************************************************************************************/
         myToolbar = (Toolbar) findViewById(R.id.sff_toolbar);
         setSupportActionBar(myToolbar);
-        myFooterToolbar = (Toolbar) findViewById(R.id.sff_footerBar);
-        setSupportActionBar(myToolbar);
         myToolbar.findViewById(R.id.toolbar_txt_title).setVisibility(View.VISIBLE);
-        ((TextView)myToolbar.findViewById(R.id.toolbar_txt_title)).setText("Sales Ticket");
+        ((TextView)myToolbar.findViewById(R.id.toolbar_txt_title)).setText(getString(R.string.headerTitle_SalesTicketStartFragment));
         myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+        myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
         myToolbar.findViewById(R.id.toolbar_btn_next).setOnClickListener(this);
         myToolbar.findViewById(R.id.toolbar_btn_prev).setOnClickListener(this);
-        myFooterToolbar.findViewById(R.id.footer_btn_save).setOnClickListener(this);
+        /********************************************************************************************/
+        myFooterToolbar = (Toolbar) findViewById(R.id.sff_footerBar);
+        setSupportActionBar(myToolbar);
+        myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
+        myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+        myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
+        myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
+        myFooterToolbar.findViewById(R.id.footer_btn_print).setVisibility(View.INVISIBLE);
+        /********************************************************************************************/
         frameLayoutfram1  = (FrameLayout)findViewById(R.id.FragmentContainer);
         SalesTicketStartFragment f1 = new SalesTicketStartFragment();
         FragmentManager fm1 = getSupportFragmentManager();
@@ -88,10 +66,11 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         ftrans.add(R.id.FragmentContainer,f1,"SalesTicketStartFragment").commit();
         currFragment = "SalesTicketStartFragment" ;
     }
+    /********************************************************************************************/
     @Override
     public void onClick(View v)
     {
-
+        /********************************************************************************************/
         if ( v.getId()== R.id.toolbar_btn_next )
         {
 
@@ -104,10 +83,7 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
             {
                 /**/
                 p8009_txt_ticket_type_desc =  ((TextView)v.findViewById(R.id.p8009_txt_ticket_type_desc)) ;
-
-
                 /**/
-
                 if ( validateAddroom().equals("T"))
                 {
                     if ( fm1.findFragmentByTag("SalesTicketListFragment")== null )
@@ -115,7 +91,6 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
                         SalesTicketListFragment f2 = new SalesTicketListFragment();
                         ftrans.add(R.id.FragmentContainer, f2, "SalesTicketListFragment").commit();
                         currFragment = "SalesTicketListFragment";
-
                     }
                     else
                     {
@@ -124,10 +99,8 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
                     }
                 }
             }
-
             else if (currFragment.equals("SalesTicketListFragment") )
             {
-
                 if (fm1.findFragmentByTag("MainPaymentFragment")== null )
                 {
                     MainPaymentFragment f2 = new MainPaymentFragment();
@@ -140,12 +113,10 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
                     fm1.beginTransaction().show(fm1.findFragmentByTag("MainPaymentFragment")).commit();
                     currFragment = "MainPaymentFragment";
                 }
-
             }
         }
         else  if ( v.getId()== R.id.toolbar_btn_prev )
         {
-
             FragmentManager fm1 = getSupportFragmentManager();
             FragmentTransaction ftrans = fm1.beginTransaction();
             ftrans.addToBackStack(null);
@@ -194,13 +165,13 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
             AlertDialog.Builder builder = new AlertDialog.Builder(SalesTicket.this);
             builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
         }
-
     }
+    /********************************************************************************************/
     @Override
     public void onBackPressed()
     {
-
     }
+    /********************************************************************************************/
     public void dbSave()
     {
         //((SalesTicket)this.getActivity()).save_josn = new JSONObject( );
@@ -268,9 +239,10 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         DBconnection dBconnection = new DBconnection(j.toString(), "INS_TICKET_8009", this, this , "");
         dBconnection.execute();
     }
-
+    /********************************************************************************************/
     @Override
-    public void getResult(SoapObject obj, String status, String status_msg, String methodName, String method_id) {
+    public void getResult(SoapObject obj, String status, String status_msg, String methodName, String method_id)
+    {
         //Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show();
         SoapObject obj1;
         SoapObject obj2;
@@ -294,19 +266,15 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
             SalesTicket.this.finish();
         }
     }
-
+    /********************************************************************************************/
     public String validateAddroom()
     {
-
         {// BEGIN of setError for all required fields
-
             if (TextUtils.isEmpty(p8009_txt_ticket_type_desc_val) )
             {
                 p8009_txt_ticket_type_desc.setError("");
-
             }
         }// END of setError for all required fields
-
         {// BEGIN of validate fields
             if (TextUtils.isEmpty(p8009_txt_ticket_type_desc_val))
             {
@@ -315,9 +283,8 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
                 return "F";
             }
         }// BEGIN of validate fields
-
         return "T" ;
-
     }
+    /********************************************************************************************/
 }
 
