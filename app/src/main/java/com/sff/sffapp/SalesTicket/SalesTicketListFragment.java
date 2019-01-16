@@ -21,9 +21,11 @@ import java.util.ArrayList;
 import com.sff.sffapp.database.ConnectionInterface;
 public class SalesTicketListFragment extends Fragment implements View.OnClickListener , ConnectionInterface
 {
+    /********************************************************************************************/
     ListView listView;
     ArrayList<SalesTicketAddItemCell> addItemArray;
     SalesTicketListAdapter addItemListAdapter;
+    /********************************************************************************************/
     public SalesTicketListFragment()
     {
     }
@@ -48,10 +50,11 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
     public void onStart()
     {
         super.onStart();
-        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.VISIBLE);
         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.VISIBLE);
         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
+        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.VISIBLE);
         ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
     }
     @Override
     public void onHiddenChanged(boolean hidden)
@@ -59,17 +62,19 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
         super.onHiddenChanged(hidden);
         if (hidden)
         {
-            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
         }
         else
         {
-            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.VISIBLE);
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.VISIBLE);
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.VISIBLE);
             ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
         }
         /********************************************************************************************
         try
@@ -118,7 +123,8 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
         /********************************************************************************************/
     }
     @Override
-    public void getResult(SoapObject obj, String status, String status_msg, String methodName, String method_id) {
+    public void getResult(SoapObject obj, String status, String status_msg, String methodName, String method_id)
+    {
         SoapObject obj2;
         obj2 = (SoapObject) obj.getProperty(0);
         obj2.getProperty("val1").toString();

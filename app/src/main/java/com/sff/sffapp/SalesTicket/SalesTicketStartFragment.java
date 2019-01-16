@@ -18,9 +18,11 @@ import org.json.JSONObject;
 import org.ksoap2.serialization.SoapObject;
 public class SalesTicketStartFragment extends Fragment   implements View.OnClickListener
 {
+    /********************************************************************************************/
     SpinnerDialog spinnerDialog ;
     TextView      p8009_txt_ticket_type_desc,p8009_txt_cust_type  ,p8009_txt_loc_type ,p8009_txt_channel  ,p8009_txt_cntry  ,p8009_txt_city  ,p8009_txt_district ;
     JSONObject    json ;
+    /********************************************************************************************/
     public SalesTicketStartFragment()
     {
     }
@@ -50,7 +52,8 @@ public class SalesTicketStartFragment extends Fragment   implements View.OnClick
         /********************************************************************************************/
         return v ;
     }
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         /********************************************************************************************/
         if (v.getId() == R.id.p8009_txt_ticket_type_desc)
         {
@@ -178,23 +181,34 @@ public class SalesTicketStartFragment extends Fragment   implements View.OnClick
         /********************************************************************************************/
     }
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
         ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
+        ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
     }
     @Override
-    public void onHiddenChanged(boolean hidden) {
+    public void onHiddenChanged(boolean hidden)
+    {
         super.onHiddenChanged(hidden);
-        if (hidden) {
+        if (hidden)
+        {
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.VISIBLE);
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.VISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
         }
         else
         {
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
             ((SalesTicket) this.getActivity()).myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
+            ((SalesTicket) this.getActivity()).myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
         }
     }
-
 }

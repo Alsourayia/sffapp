@@ -87,7 +87,7 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                     (p8009_txt_color_name.getText().toString()==null || p8009_txt_color_name_val==null)
                 )
             {
-                Toast.makeText(this.getContext(), getString(R.string.msg_no_items_assign_to_list),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getContext(), getString(R.string.msg_no_items_assign_to_list),Toast.LENGTH_LONG).show();
             }
             /********************************************************************************************/
             else
