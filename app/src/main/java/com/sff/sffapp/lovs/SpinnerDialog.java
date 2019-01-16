@@ -192,7 +192,7 @@ public class SpinnerDialog  implements ConnectionInterface{
             for (int j = 0; j < obj.getPropertyCount() - 1; j++) {
                 obj2 = (SoapObject) obj.getProperty(j);
                 //this.items.add(obj2.getProperty("val2").toString());
-                this.items.add(obj2.getProperty(this.IdOfLbl).toString());
+                this.items.add(obj2.getPrimitiveProperty(this.IdOfLbl).toString());
            }
             this.showSpinerDialog();
         }

@@ -4,6 +4,7 @@ edited by mb
  */
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -13,13 +14,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.sff.sffapp.Payment.MainPaymentFragment;
 import com.sff.sffapp.R;
 import com.sff.sffapp.database.ConnectionInterface;
 import com.sff.sffapp.database.DBconnection;
-import com.sff.sffapp.lovs.SpinnerDialog;
 import com.sff.sffapp.menu.userInfo;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,39 +33,41 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
     private FrameLayout  frameLayoutfram1 ;
     String  currFragment ;
     public  Toolbar myToolbar,myFooterToolbar;
-    TextView p8009_txt_ticket_type_desc ;
-    public  String trans_date,p8009_txt_ticket_type_desc_val,p8009_txt_cust_type_val,p8009_txt_loc_type_val,p8009_txt_channel_val,p8009_txt_cntry_val,p8009_txt_city_val,p8009_txt_district_val;
+    public  String   trans_date,p8009_txt_ticket_type_desc_val,p8009_txt_cust_type_val,p8009_txt_loc_type_val,p8009_txt_channel_val,p8009_txt_cntry_val,p8009_txt_city_val,p8009_txt_district_val;
+    EditText p8009_txt_customer_name,p8009_txt_cust_mob_no,p8009_txt_address,p8009_txt_street,p8009_txt_nearest_sign;
     /********************************************************************************************/
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sales_ticket);
-        /********************************************************************************************/
-        myToolbar = (Toolbar) findViewById(R.id.sff_toolbar);
-        setSupportActionBar(myToolbar);
-        myToolbar.findViewById(R.id.toolbar_txt_title).setVisibility(View.VISIBLE);
-        ((TextView)myToolbar.findViewById(R.id.toolbar_txt_title)).setText(getString(R.string.headerTitle_SalesTicketStartFragment));
-        myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
-        myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
-        myToolbar.findViewById(R.id.toolbar_btn_next).setOnClickListener(this);
-        myToolbar.findViewById(R.id.toolbar_btn_prev).setOnClickListener(this);
-        /********************************************************************************************/
-        myFooterToolbar = (Toolbar) findViewById(R.id.sff_footerBar);
-        setSupportActionBar(myToolbar);
-        myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
-        myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
-        myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
-        myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
-        myFooterToolbar.findViewById(R.id.footer_btn_print).setVisibility(View.INVISIBLE);
-        /********************************************************************************************/
-        frameLayoutfram1  = (FrameLayout)findViewById(R.id.FragmentContainer);
-        SalesTicketStartFragment f1 = new SalesTicketStartFragment();
-        FragmentManager fm1 = getSupportFragmentManager();
-        FragmentTransaction ftrans = fm1.beginTransaction();
-        ftrans.addToBackStack(null);
-        ftrans.add(R.id.FragmentContainer,f1,"SalesTicketStartFragment").commit();
-        currFragment = "SalesTicketStartFragment" ;
+        {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_sales_ticket);
+            /********************************************************************************************/
+            myToolbar = (Toolbar) findViewById(R.id.sff_toolbar);
+            setSupportActionBar(myToolbar);
+            myToolbar.findViewById(R.id.toolbar_txt_title).setVisibility(View.VISIBLE);
+            ((TextView) myToolbar.findViewById(R.id.toolbar_txt_title)).setText(getString(R.string.headerTitle_SalesTicketStartFragment));
+            myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+            myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
+            myToolbar.findViewById(R.id.toolbar_btn_next).setOnClickListener(this);
+            myToolbar.findViewById(R.id.toolbar_btn_prev).setOnClickListener(this);
+            /********************************************************************************************/
+            myFooterToolbar = (Toolbar) findViewById(R.id.sff_footerBar);
+            setSupportActionBar(myToolbar);
+            myFooterToolbar.findViewById(R.id.footer_btn_cancel).setVisibility(View.INVISIBLE);
+            myFooterToolbar.findViewById(R.id.footer_btn_save).setVisibility(View.INVISIBLE);
+            myFooterToolbar.findViewById(R.id.footer_btn_add).setVisibility(View.INVISIBLE);
+            myFooterToolbar.findViewById(R.id.footer_btn_check).setVisibility(View.INVISIBLE);
+            myFooterToolbar.findViewById(R.id.footer_btn_print).setVisibility(View.INVISIBLE);
+            /********************************************************************************************/
+            frameLayoutfram1 = (FrameLayout) findViewById(R.id.FragmentContainer);
+            SalesTicketStartFragment f1 = new SalesTicketStartFragment();
+            FragmentManager fm1 = getSupportFragmentManager();
+            FragmentTransaction ftrans = fm1.beginTransaction();
+            ftrans.addToBackStack(null);
+            ftrans.add(R.id.FragmentContainer, f1, "SalesTicketStartFragment").commit();
+            currFragment = "SalesTicketStartFragment";
+        }
     }
     /********************************************************************************************/
     @Override
@@ -73,98 +76,151 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         /********************************************************************************************/
         if ( v.getId()== R.id.toolbar_btn_next )
         {
-
-            FragmentManager fm1 = getSupportFragmentManager();
-            FragmentTransaction ftrans = fm1.beginTransaction();
-            ftrans.addToBackStack(null);
-            fm1.beginTransaction().hide(fm1.findFragmentByTag(currFragment)).commit();
-
-            if (currFragment.equals("SalesTicketStartFragment") )
+            if (currFragment.equals("SalesTicketStartFragment"))
             {
-                /**/
-                p8009_txt_ticket_type_desc =  ((TextView)v.findViewById(R.id.p8009_txt_ticket_type_desc)) ;
-                /**/
-                if ( validateAddroom().equals("T"))
+                if (validateSalesTicket(v).equals("T"))
                 {
-                    if ( fm1.findFragmentByTag("SalesTicketListFragment")== null )
-                    {
+                    FragmentManager fm1 = getSupportFragmentManager();
+                    FragmentTransaction ftrans = fm1.beginTransaction();
+                    ftrans.addToBackStack(null);
+                    fm1.beginTransaction().hide(fm1.findFragmentByTag(currFragment)).commit();
+                    if (fm1.findFragmentByTag("SalesTicketListFragment") == null) {
                         SalesTicketListFragment f2 = new SalesTicketListFragment();
                         ftrans.add(R.id.FragmentContainer, f2, "SalesTicketListFragment").commit();
                         currFragment = "SalesTicketListFragment";
-                    }
-                    else
-                    {
+                    } else {
                         fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
                         currFragment = "SalesTicketListFragment";
                     }
                 }
             }
-            else if (currFragment.equals("SalesTicketListFragment") )
+            else if (currFragment.equals("SalesTicketListFragment"))
             {
-                if (fm1.findFragmentByTag("MainPaymentFragment")== null )
-                {
-                    MainPaymentFragment f2 = new MainPaymentFragment();
-                    f2.baseClass = "SalesTicket" ;
-                    ftrans.add(R.id.FragmentContainer, f2, "MainPaymentFragment").commit();
-                    currFragment = "MainPaymentFragment";
-                }
-                else
-                {
-                    fm1.beginTransaction().show(fm1.findFragmentByTag("MainPaymentFragment")).commit();
-                    currFragment = "MainPaymentFragment";
-                }
-            }
-        }
-        else  if ( v.getId()== R.id.toolbar_btn_prev )
-        {
-            FragmentManager fm1 = getSupportFragmentManager();
-            FragmentTransaction ftrans = fm1.beginTransaction();
-            ftrans.addToBackStack(null);
-            fm1.beginTransaction().hide(fm1.findFragmentByTag(currFragment)).commit();
-           // myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
-            //myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
-            if (currFragment.equals("SalesTicketListFragment"  ) )
-            {
-                fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketStartFragment")).commit();
-                currFragment = "SalesTicketStartFragment";
-
-            }
-            else  if (currFragment.equals("MainPaymentFragment"  ) )
-            {
-                fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
-                currFragment = "SalesTicketListFragment";
-
-            }
-        }
-        else  if ( v.getId()== R.id.p8009_txt_cust_type)
-        {
-            Toast.makeText(this, "يجب ادخال اسم العميل", Toast.LENGTH_SHORT).show();
-        }
-        else if (v.getId() == R.id.footer_btn_save)
-        {
-            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
-            {
-                @Override
-                public void onClick(DialogInterface dialog, int which)
-                {
-                    //Toast.makeText(SalesTicket.this, "saved", Toast.LENGTH_SHORT).show();
-                    switch (which)
+                    /*if (fm1.findFragmentByTag("MainPaymentFragment")== null )
                     {
-                        case DialogInterface.BUTTON_POSITIVE:
-                            //Yes button clicked
-                            dbSave();
-                            break;
-
-                        case DialogInterface.BUTTON_NEGATIVE:
-                            //No button clicked
-                            break;
+                        MainPaymentFragment f2 = new MainPaymentFragment();
+                        f2.baseClass = "SalesTicket" ;
+                        ftrans.add(R.id.FragmentContainer, f2, "MainPaymentFragment").commit();
+                        currFragment = "MainPaymentFragment";
                     }
-                }
-            };
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(SalesTicket.this);
-            builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+                    else
+                    {
+                        fm1.beginTransaction().show(fm1.findFragmentByTag("MainPaymentFragment")).commit();
+                        currFragment = "MainPaymentFragment";
+                    }*/
+            }
         }
+            else  if ( v.getId()== R.id.toolbar_btn_prev )
+            {
+                FragmentManager fm1 = getSupportFragmentManager();
+                FragmentTransaction ftrans = fm1.beginTransaction();
+                ftrans.addToBackStack(null);
+                fm1.beginTransaction().hide(fm1.findFragmentByTag(currFragment)).commit();
+               // myToolbar.findViewById(R.id.toolbar_btn_prev).setVisibility(View.INVISIBLE);
+                //myToolbar.findViewById(R.id.toolbar_btn_next).setVisibility(View.VISIBLE);
+                if (currFragment.equals("SalesTicketListFragment"  ) )
+                {
+                    fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketStartFragment")).commit();
+                    currFragment = "SalesTicketStartFragment";
+                }
+                else  if (currFragment.equals("MainPaymentFragment"  ) )
+                {
+                    fm1.beginTransaction().show(fm1.findFragmentByTag("SalesTicketListFragment")).commit();
+                    currFragment = "SalesTicketListFragment";
+                }
+            }
+            else  if ( v.getId()== R.id.p8009_txt_cust_type)
+            {
+                Toast.makeText(this, "يجب ادخال اسم العميل", Toast.LENGTH_SHORT).show();
+            }
+            else if (v.getId() == R.id.footer_btn_save)
+            {
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        switch (which)
+                        {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //Yes button clicked
+                                dbSave();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(SalesTicket.this);
+                builder.setMessage("Are you sure?").setPositiveButton("Yes", dialogClickListener).setNegativeButton("No", dialogClickListener).show();
+            }
+
+    }
+    /********************************************************************************************/
+    public String validateSalesTicket(View vFromToolbarBtn)
+    {
+        String return_flag = "T";
+        /********************************************************************************************/
+        {
+            if (p8009_txt_ticket_type_desc_val == null)
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_type), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_customer_name.getText().toString().isEmpty())
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_customer_name), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_cust_mob_no.getText().toString().isEmpty())
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cust_mob_no), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_cust_type_val == null )
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cust_type), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_loc_type_val == null )
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_loc_type), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_channel_val == null)
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_channel_type), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_cntry_val == null )
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cntry), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_city_val == null)
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_city), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_address.getText().toString().isEmpty())
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_address), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_street.getText().toString().isEmpty())
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_street), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_nearest_sign.getText().toString().isEmpty())
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_nearest_sign), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+        }
+        return return_flag;
     }
     /********************************************************************************************/
     @Override
@@ -247,13 +303,12 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         SoapObject obj1;
         SoapObject obj2;
         obj1=obj;
-        String val1_JSON_OUT=null ,
-               val2_JSON_OUT=null;
+        String val1_JSON_OUT=null ,val2_JSON_OUT=null;
         if (obj1 != null)
         {
             obj2 = (SoapObject) obj.getProperty(0);
-            val1_JSON_OUT = obj2.getProperty("val1").toString();
-            val2_JSON_OUT = obj2.getProperty("val2").toString();
+            val1_JSON_OUT = obj2.getPrimitiveProperty("val1").toString();
+            val2_JSON_OUT = obj2.getPrimitiveProperty("val2").toString();
             Toast.makeText(SalesTicket.this, val2_JSON_OUT, Toast.LENGTH_SHORT).show();
         }
         else
@@ -266,25 +321,6 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
             SalesTicket.this.finish();
         }
     }
-    /********************************************************************************************/
-    public String validateAddroom()
-    {
-        {// BEGIN of setError for all required fields
-            if (TextUtils.isEmpty(p8009_txt_ticket_type_desc_val) )
-            {
-                p8009_txt_ticket_type_desc.setError("");
-            }
-        }// END of setError for all required fields
-        {// BEGIN of validate fields
-            if (TextUtils.isEmpty(p8009_txt_ticket_type_desc_val))
-            {
-                Toast.makeText(SalesTicket.this, " يجب اختيار نوع الغرفة ", Toast.LENGTH_SHORT).show();
-                p8009_txt_ticket_type_desc.setError("");
-                return "F";
-            }
-        }// BEGIN of validate fields
-        return "T" ;
-    }
-    /********************************************************************************************/
+
 }
 

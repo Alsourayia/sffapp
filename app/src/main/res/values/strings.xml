@@ -16,7 +16,17 @@
     <string name="header_salesticket_footer_btn_ok">نعم</string>
     <string name="header_salesticket_footer_btn_no">لا</string>
     <string name="msg_no_items_assign_to_list">لم تقم بالإضافة!</string>
-
+    <string name="msg_error_sales_ticket_type">يجب تحديد نوع التذكرة!</string>
+    <string name="msg_error_sales_ticket_cust_type">يجب تحديد نوع العميل!</string>
+    <string name="msg_error_sales_ticket_loc_type">يجب تحديد نوع الموقع!</string>
+    <string name="msg_error_sales_ticket_channel_type">يجب تحديد قناة الاتصال!</string>
+    <string name="msg_error_sales_ticket_cntry">يجب تحديد البلد!</string>
+    <string name="msg_error_sales_ticket_city">يجب تحديد المدينة!</string>
+    <string name="msg_error_sales_ticket_customer_name">يجب ادخال اسم العميل!</string>
+    <string name="msg_error_sales_ticket_cust_mob_no">يجب ادخال رقم جوال العميل!</string>
+    <string name="msg_error_sales_ticket_address">يجب ادخال عنوان العميل!</string>
+    <string name="msg_error_sales_ticket_street">يجب ادخال الشارع!</string>
+    <string name="msg_error_sales_ticket_nearest_sign">يجب ادخال اقرب معلم!</string>
 
 
 </resources>

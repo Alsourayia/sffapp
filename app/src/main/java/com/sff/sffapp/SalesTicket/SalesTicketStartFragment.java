@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,13 +38,18 @@ public class SalesTicketStartFragment extends Fragment   implements View.OnClick
         View v = inflater.inflate(R.layout.fragment_sales_ticket_start_fragment, container, false);
         v.findViewById(R.id.p8009_txt_customer_name).requestFocus();
         /********************************************************************************************/
-        p8009_txt_ticket_type_desc  =  ((TextView)v.findViewById(R.id.p8009_txt_ticket_type_desc)) ;
+        p8009_txt_ticket_type_desc  = ((TextView)v.findViewById(R.id.p8009_txt_ticket_type_desc)) ;
         p8009_txt_cust_type         = ((TextView)v.findViewById(R.id.p8009_txt_cust_type)) ;
         p8009_txt_loc_type          = ((TextView)v.findViewById(R.id.p8009_txt_loc_type)) ;
         p8009_txt_channel           = ((TextView)v.findViewById(R.id.p8009_txt_channel)) ;
         p8009_txt_cntry             = ((TextView)v.findViewById(R.id.p8009_txt_cntry)) ;
         p8009_txt_city              = ((TextView)v.findViewById(R.id.p8009_txt_city)) ;
         p8009_txt_district          = ((TextView)v.findViewById(R.id.p8009_txt_district)) ;
+        ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_customer_name = ((EditText)v.findViewById(R.id.p8009_txt_customer_name)) ;
+        ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cust_mob_no = ((EditText)v.findViewById(R.id.p8009_txt_cust_mob_no)) ;
+        ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_address = ((EditText)v.findViewById(R.id.p8009_txt_address)) ;
+        ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_street = ((EditText)v.findViewById(R.id.p8009_txt_street)) ;
+        ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_nearest_sign = ((EditText)v.findViewById(R.id.p8009_txt_nearest_sign)) ;
         /********************************************************************************************/
         p8009_txt_ticket_type_desc.setOnClickListener(this);
         p8009_txt_cust_type.setOnClickListener(this) ;
@@ -64,7 +70,7 @@ public class SalesTicketStartFragment extends Fragment   implements View.OnClick
             spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
                                                    @Override
                                                    public void onClick(String item, int position, SoapObject obj) {
-           p8009_txt_ticket_type_desc.setText(item);
+            p8009_txt_ticket_type_desc.setText(item);
            ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_ticket_type_desc_val = obj.getPrimitiveProperty("val1").toString(); }
                                                }
             );
