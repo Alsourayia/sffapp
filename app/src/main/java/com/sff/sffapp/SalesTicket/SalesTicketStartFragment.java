@@ -1,22 +1,19 @@
 package com.sff.sffapp.SalesTicket;
 /*
+created by hani,eyyad,abdo,mb
 edited by mb
  */
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.sff.sffapp.R;
 import com.sff.sffapp.lovs.OnSpinerItemClick;
 import com.sff.sffapp.lovs.SpinnerDialog;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksoap2.serialization.SoapObject;
@@ -84,7 +81,6 @@ public class SalesTicketStartFragment extends Fragment   implements View.OnClick
                 public void onClick(String item, int position, SoapObject obj) {
                     p8009_txt_cust_type.setText(item);
                     ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cust_type_val = obj.getPrimitiveProperty("val1").toString();
-
                 }
             }
             );

@@ -1,5 +1,4 @@
 package com.sff.sffapp.lovs;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,23 +11,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.sff.sffapp.R;
-
 import com.sff.sffapp.database.ConnectionInterface;
 import com.sff.sffapp.database.DBconnection;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksoap2.serialization.SoapObject;
-
 import java.util.ArrayList;
 import java.util.Iterator;
-
-/**
- * Created by Md Farhan Raja on 2/23/2017.
- */
 public class SpinnerDialog  implements ConnectionInterface{
     JSONObject json ;
     JSONObject json2 ;
@@ -44,24 +34,15 @@ public class SpinnerDialog  implements ConnectionInterface{
     String IdOfLbl ;
     Context mcontext ;
     String lovName ;
-
     String page_no ;
     String json_in ;
-
-
     public SpinnerDialog(Activity activity,  String dialogTitle , String lovName ,String IdOfLbl ,Context mcontext , String page_no , String json_in) {
-
         json  = new JSONObject() ;
         try {
-
         json.put("lov_name" , lovName) ;
-
         json.put("page_no" , page_no) ;
-
             json2 = new JSONObject(json_in) ;
-
             Iterator<String> jsonArry = json2.keys() ;
-
             while(jsonArry.hasNext()) {
                 String nameJson = (String)jsonArry.next();
                 json.put(nameJson , json2.getString(nameJson)) ;
@@ -70,23 +51,16 @@ public class SpinnerDialog  implements ConnectionInterface{
         {
             e.printStackTrace();
         }
-
-
         this.lovName = lovName ;
         this.page_no = page_no ;
         this.json_in = json_in ;
-
         this.IdOfLbl   = IdOfLbl ;
         this.context = activity;
         this.dTitle  = dialogTitle;
         this.mcontext= mcontext ;
         this.items = new ArrayList<String>() ;
-
         DBconnection dBconnection = new DBconnection(json.toString(),"android_get_lov",this,this.mcontext,"");
-
         dBconnection.execute();
-
-
     }
 
     public SpinnerDialog(Activity activity, ArrayList<String> items, String dialogTitle) {
@@ -189,7 +163,7 @@ public class SpinnerDialog  implements ConnectionInterface{
         obj1=obj;
         if (obj1 != null) {
             /*************************************************/
-            for (int j = 0; j < obj.getPropertyCount() - 1; j++) {
+            for (int j = 0; j < obj.getPropertyCount()  ; j++) {
                 obj2 = (SoapObject) obj.getProperty(j);
                 //this.items.add(obj2.getProperty("val2").toString());
                 this.items.add(obj2.getPrimitiveProperty(this.IdOfLbl).toString());
