@@ -24,9 +24,13 @@
     <string name="msg_error_sales_ticket_city">يجب تحديد المدينة!</string>
     <string name="msg_error_sales_ticket_customer_name">يجب ادخال اسم العميل!</string>
     <string name="msg_error_sales_ticket_cust_mob_no">يجب ادخال رقم جوال العميل!</string>
+    <string name="msg_error_sales_ticket_cust_mob_no2">رقم جوال العميل يتجاوز العدد المسموح به!</string>
+    <string name="msg_error_sales_ticket_cust_mob_no3">رقم الجوال يجب ان يحتوي على ارقام فقط</string>
+    <string name="msg_error_sales_ticket_cust_mob_no4">رقم الجوال غير مكتمل!</string>
     <string name="msg_error_sales_ticket_address">يجب ادخال عنوان العميل!</string>
     <string name="msg_error_sales_ticket_street">يجب ادخال الشارع!</string>
     <string name="msg_error_sales_ticket_nearest_sign">يجب ادخال اقرب معلم!</string>
+
 
 
 </resources>

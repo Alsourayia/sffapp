@@ -5,17 +5,14 @@ edited by mb
  */
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.sff.sffapp.Payment.MainPaymentFragment;
@@ -28,6 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.ksoap2.serialization.SoapObject;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Pattern;
+
 public class SalesTicket extends AppCompatActivity implements ConnectionInterface,View.OnClickListener
 {
     /********************************************************************************************/
@@ -174,6 +174,21 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
                 Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cust_mob_no), Toast.LENGTH_SHORT).show();
                 return_flag = "F";
             }
+            else if (p8009_txt_cust_mob_no.getText().length() > 12)
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cust_mob_no2), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if ( !Pattern.compile( "[0-9]" ).matcher( p8009_txt_cust_mob_no.getText().toString() ).find() )
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cust_mob_no3), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
+            else if (p8009_txt_cust_mob_no.getText().length() < 9)
+            {
+                Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cust_mob_no4), Toast.LENGTH_SHORT).show();
+                return_flag = "F";
+            }
             else if (p8009_txt_cust_type_val == null )
             {
                 Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_cust_type), Toast.LENGTH_SHORT).show();
@@ -214,6 +229,8 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
                 Toast.makeText(SalesTicket.this, getString(R.string.msg_error_sales_ticket_nearest_sign), Toast.LENGTH_SHORT).show();
                 return_flag = "F";
             }
+
+
         }
         return return_flag;
     }
@@ -235,31 +252,31 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
         {
             //((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_customer_name)).getText().toString()
             j.put("USER_STORE", userInfo.getUSER_STORE());
-            j.put("TRANS_DATE", trans_date == null ? "" : trans_date) ;
+            //j.put("TRANS_DATE", trans_date == null ? "" : trans_date) ;
             j.put("USER_CODE", userInfo.getUSER_NO());
             /********************************************************************************************/
             j.put("TICKET_TYPE_CODE", this.p8009_txt_ticket_type_desc_val == null ? "" : this.p8009_txt_ticket_type_desc_val);
-            j.put("CUSTOMER_NAME", p8009_txt_customer_name.getText().toString());
-            j.put("CUSTOMER_MOBILE_NO", p8009_txt_cust_mob_no.getText().toString());
-            j.put("CUSTOMER_EMAIL", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_cust_email)).getText().toString());
+            j.put("CUSTOMER_NAME", p8009_txt_customer_name.getText().toString()== null ? "" : p8009_txt_customer_name.getText().toString());
+            j.put("CUSTOMER_MOBILE_NO", p8009_txt_cust_mob_no.getText().toString()== null ? "" : p8009_txt_cust_mob_no.getText().toString() );
+            j.put("CUSTOMER_EMAIL", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_cust_email)).getText().toString()== null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_cust_email)).getText().toString());
             j.put("CUST_TYPE_CODE", this.p8009_txt_cust_type_val == null ? "" : this.p8009_txt_cust_type_val);
             j.put("CUST_LOC_TYPE", this.p8009_txt_loc_type_val == null ? "" : this.p8009_txt_loc_type_val);
             j.put("CUST_CHANNEL_TYPE", this.p8009_txt_channel_val == null ? "" : this.p8009_txt_channel_val);
-            j.put("CUSTOMER_NOTE", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_notes)).getText().toString());
+            j.put("CUSTOMER_NOTE", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_notes)).getText().toString()== null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_notes)).getText().toString());
             /********************************************************************************************/
-            j.put("CUST_CONTACT_NAME", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_name)).getText().toString());
-            j.put("CUST_CONTACT_MOBILE_NO", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_mob_no)).getText().toString());
-            j.put("CUST_CONTACT_EMAIL", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_email)).getText().toString());
-            j.put("CUST_CONTACT_RELATIONSHIP", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_relationship)).getText().toString());
+            j.put("CUST_CONTACT_NAME", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_name)).getText().toString()== null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_name)).getText().toString());
+            j.put("CUST_CONTACT_MOBILE_NO", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_mob_no)).getText().toString() == null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_mob_no)).getText().toString());
+            j.put("CUST_CONTACT_EMAIL", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_email)).getText().toString()== null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_contact_email)).getText().toString());
+            j.put("CUST_CONTACT_RELATIONSHIP", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_relationship)).getText().toString() == null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_relationship)).getText().toString());
             /********************************************************************************************/
             j.put("CUST_CNTRY_CODE", this.p8009_txt_cntry_val == null ? "" : this.p8009_txt_cntry_val);
             j.put("CUST_CITY_CODE", this.p8009_txt_city_val == null ? "" : this.p8009_txt_city_val);
             j.put("CUST_DISTRICT_CODE", this.p8009_txt_district_val == null ? "" : this.p8009_txt_district_val);
-            j.put("CUST_ADDRESS", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_address)).getText().toString());
-            j.put("STREET_NAME", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_street)).getText().toString());
-            j.put("NEAREST_SIGN", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_nearest_sign)).getText().toString());
+            j.put("CUST_ADDRESS", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_address)).getText().toString()== null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_address)).getText().toString());
+            j.put("STREET_NAME", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_street)).getText().toString()== null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_street)).getText().toString());
+            j.put("NEAREST_SIGN", ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_nearest_sign)).getText().toString()== null ? "" : ((EditText) ((SalesTicketStartFragment) fm1.findFragmentByTag("SalesTicketStartFragment")).getView().findViewById(R.id.p8009_txt_nearest_sign)).getText().toString());
             /********************************************************************************************/
-            /*j.put("DTL_COUNT", addItemArray.size());
+            j.put("DTL_COUNT", addItemArray.size());
             for (int i = 0; i < addItemArray.size(); i++)
             {
                 JSONObject x = new JSONObject();
@@ -274,35 +291,34 @@ public class SalesTicket extends AppCompatActivity implements ConnectionInterfac
                 jsonArrayList.put(x);
                 x = null;
             }
-            j.put("DTLLIST", jsonArrayList);*/
+            j.put("DTLLIST", jsonArrayList);
         }
         catch (JSONException e)
         {
             e.printStackTrace();
         }
-        //DBconnection dBconnection = new DBconnection(j.toString(), "INS_TICKET_8009", this, this , "");
-        DBconnection dBconnection = new DBconnection(j.toString(), "INS_TICKET_8009", this);
+        DBconnection dBconnection = new DBconnection(j.toString(), "INS_TICKET_8009", SalesTicket.this, SalesTicket.this , "");
         dBconnection.execute();
     }
     /********************************************************************************************/
     @Override
     public void getResult(SoapObject obj, String status, String status_msg, String methodName, String method_id)
     {
-        //Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show();
         SoapObject obj1;
         SoapObject obj2;
         obj1=obj;
-        String val1_JSON_OUT=null ,val2_JSON_OUT=null;
+        String val1_JSON_OUT=null;
+        String val2_JSON_OUT=null;
         if (obj1 != null)
         {
             obj2 = (SoapObject) obj.getProperty(0);
-            val1_JSON_OUT = obj2.getProperty("val1").toString();
-            val2_JSON_OUT = obj2.getProperty("val2").toString();//getPrimitiveProperty
+            val1_JSON_OUT = obj2.getPrimitiveProperty("val1").toString();
+            val2_JSON_OUT = obj2.getPrimitiveProperty("val2").toString();//getPrimitiveProperty
             Toast.makeText(SalesTicket.this, val2_JSON_OUT, Toast.LENGTH_SHORT).show();
         }
         else
         {
-            //Toast.makeText( (SalesTicket)this, "لا توجد بيانات", Toast.LENGTH_SHORT).show();
+            Toast.makeText( (SalesTicket)this, "لا توجد بيانات", Toast.LENGTH_SHORT).show();
         }
 
         if (val1_JSON_OUT.equals("T"))
