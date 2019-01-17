@@ -50,7 +50,6 @@ public class DBconnection extends AsyncTask<Void, Void, Void> {
         {
             transport.call(SOAP_ACTION, soapEnvelope);
             returngetResponseobj = (SoapObject) soapEnvelope.getResponse();
-
         }
         catch (Exception ex)
         {

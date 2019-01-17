@@ -18,7 +18,6 @@ public class SalesTicketListAdapter extends BaseAdapter
     LayoutInflater inflater;
     ArrayList<SalesTicketAddItemCell> salesTicketListArrayList;
     private View view;
-
     /********************************************************************************************/
     public SalesTicketListAdapter(Context context , ArrayList<SalesTicketAddItemCell> salesTicketListArrayList )
     {

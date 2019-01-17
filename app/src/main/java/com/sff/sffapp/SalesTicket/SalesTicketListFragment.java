@@ -45,6 +45,7 @@ public class SalesTicketListFragment extends Fragment implements View.OnClickLis
         listView = v.findViewById(R.id.p8009_list_items);
         addItemArray = new ArrayList<SalesTicketAddItemCell>();
         addItemListAdapter = new SalesTicketListAdapter(this.getContext(), this.addItemArray);
+
         listView.setAdapter(addItemListAdapter);
         /********************************************************************************************/
         //InputMethodManager inputManager = (InputMethodManager) this.getActivity().getSystemService(this.getContext().INPUT_METHOD_SERVICE);

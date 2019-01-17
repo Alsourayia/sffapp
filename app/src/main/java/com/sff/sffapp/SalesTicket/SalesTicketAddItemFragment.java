@@ -111,7 +111,8 @@ public class SalesTicketAddItemFragment extends Fragment  implements View.OnClic
                 SalesTicketAddItemCell mItemCell ;
                 /********************************************************************************************/
                 mItemCell = new SalesTicketAddItemCell();
-                mItemCell.v_ser_no = (((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.size()+1);
+                //mItemCell.v_ser_no = (((SalesTicketListFragment)fm1.findFragmentByTag("SalesTicketListFragment")).addItemArray.size()+1);
+
                 mItemCell.v_mgrp_desc = p8009_txt_mgrp_desc.getText().toString();
                 mItemCell.v_mgrp_code = p8009_txt_mgrp_desc_val;
                 mItemCell.v_item_desc = p8009_txt_item_desc.getText().toString();

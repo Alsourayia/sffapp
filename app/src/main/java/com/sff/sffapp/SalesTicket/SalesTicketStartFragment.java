@@ -155,25 +155,24 @@ public class SalesTicketStartFragment extends Fragment   implements View.OnClick
         else if (v.getId() == R.id.p8009_txt_district)
         {
             if (((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val == null  ){
-                Toast.makeText(this.getContext(), "يجب اختيار البلد والمدينة", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getContext(), "يجب اختيار البلد", Toast.LENGTH_SHORT).show();
                 p8009_txt_cntry.requestFocus();
             }
             if ( ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_city_val == null ){
-                Toast.makeText(this.getContext(), "يجب اختيار البلد والمدينة", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getContext(), "يجب اختيار المدينة", Toast.LENGTH_SHORT).show();
                 p8009_txt_city.requestFocus();
             } else {
                 json  = new JSONObject() ;
                 try
                 {
-                    json.put("JSON_CNTRY_CODE" , p8009_txt_cntry ) ;
-                    json.put("JSON_CITY_CODE"  , p8009_txt_city  ) ;
+                    json.put("JSON_CNTRY_CODE" , ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_cntry_val) ;
+                    json.put("JSON_CITY_CODE"  , ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_city_val  ) ;
                     spinnerDialog = new SpinnerDialog(this.getActivity(), "اختيار الحي", "DISTRICTS", "val2", this.getContext(), "8009", json.toString());
                     spinnerDialog.bindOnSpinerListener(new OnSpinerItemClick() {
                         @Override
                         public void onClick(String item, int position, SoapObject obj) {
                             p8009_txt_district.setText(item);
                             ((SalesTicket) SalesTicketStartFragment.this.getActivity()).p8009_txt_district_val = obj.getPrimitiveProperty("val1").toString();
-                            //Toast.makeText(SalesTicket_old.this, CITY_code +"" , Toast.LENGTH_SHORT).show();
                         }
                     });
                 } catch (JSONException e)

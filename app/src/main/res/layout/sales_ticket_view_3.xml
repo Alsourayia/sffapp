@@ -96,7 +96,7 @@
             android:background="@drawable/required_item"
             android:ems="10"
             android:hint="اسم الشارع"
-            android:inputType="phone"
+            android:inputType="text"
             android:singleLine="true"
             android:textAlignment="textEnd"
             android:textDirection="rtl" />
